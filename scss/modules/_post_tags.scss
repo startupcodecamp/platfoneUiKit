@@ -1,0 +1,10 @@
+.post-item__tags{
+  cursor: pointer;
+  a{
+    @extend %link-no-line;
+  }
+}
+
+.lable{
+  border-radius: 0;
+}

@@ -1,0 +1,33 @@
+// Alternate buttons
+// --------------------------------------------------
+
+.outline-style.btn-default {
+  @include button-variant($gray-light, $white, $gray-light);
+}
+.outline-style.btn-primary {
+  @include button-variant($brand-primary, $white, $btn-primary-border);
+}
+.outline-style.btn-success {
+  @include button-variant($brand-success, $white, $btn-success-border);
+}
+.outline-style.btn-info {
+  @include button-variant($brand-info, $white, $btn-info-border);
+}
+.outline-style.btn-warning {
+  @include button-variant($brand-warning, $white, $btn-warning-border);
+}
+.outline-style.btn-danger {
+  @include button-variant($brand-danger, $btn-danger-bg, $btn-danger-border);
+}
+
+/* 特定的按鈕 */
+
+.btn-follow, .btn-follow-ing{
+  margin-bottom: 15px;
+}
+
+.btn-follow-ing{
+  &:hover{
+    content: "Unfollow";
+  }
+}

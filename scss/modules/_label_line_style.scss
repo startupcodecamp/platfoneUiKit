@@ -1,0 +1,36 @@
+// Colors
+// Contextual variations (linked labels get darker on :hover)
+
+.outline-style.label-default {
+  @include label-variant-reverse($label-default-bg);
+}
+
+.outline-style.label-primary {
+  @include label-variant-reverse($label-primary-bg);
+}
+
+.outline-style.label-success {
+  @include label-variant-reverse($label-success-bg);
+}
+
+.outline-style.label-info {
+  @include label-variant-reverse($label-info-bg);
+}
+
+.outline-style.label-warning {
+  @include label-variant-reverse($label-warning-bg);
+}
+
+.outline-style.label-danger {
+  @include label-variant-reverse($label-danger-bg);
+}
+
+.label{
+  font-weight: $font-weight--light;
+  box-sizing: border-box;
+  font-size: .8em;
+}
+.label-default{
+  @include label-variant($gray-lighter);
+  color: $gray-darker;
+}

@@ -1,0 +1,81 @@
+@charset "UTF-8";
+@font-face {
+  font-family: 'platfoneicon';
+  src:url('fonts/platfoneicon.eot?ygxbfq');
+  src:url('fonts/platfoneicon.eot?ygxbfq#iefix') format('embedded-opentype'),
+    url('fonts/platfoneicon.ttf?ygxbfq') format('truetype'),
+    url('fonts/platfoneicon.woff?ygxbfq') format('woff'),
+    url('fonts/platfoneicon.svg?ygxbfq#platfoneicon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icn {
+  font-family: 'platfoneicon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+$icn-name: (
+  dollar: "e900",
+  share: "e901",
+  delete: "e902",
+  plus-circle: "e903",
+  add: "e904",
+  alarmclock: "e905",
+  attachments: "e906",
+  calendar: "e907",
+  camera: "e908",
+  caution: "e909",
+  chat: "e90a",
+  clock: "e90b",
+  cloud: "e90c",
+  edit: "e90d",
+  heart-solid: "e90e",
+  heart: "e90f",
+  lock: "e910",
+  map-pin: "e911",
+  pictures: "e912",
+  profile-female: "e913",
+  profile-male: "e914",
+  refresh: "e915",
+  ribbon: "e916",
+  search: "e917",
+  Tag: "e918",
+  tools: "e919",
+  video: "e91a",
+  googleplus: "e91b",
+  facebook: "e91c",
+  rss: "e91d",
+  twitter: "e91e",
+  linkedin: "e91f",
+  menu: "e120",
+  ellipsis: "e129"
+);
+
+
+@mixin icn-content($map){
+  @each $name, $content in $map{
+    .icn-#{$name}{
+      &:before{
+        @content;
+        content: unquote("\"")+unquote(str-insert($content, "\\", 1))+unquote("\"");
+      }
+
+    }
+  }
+}
+
+@include icn-content($icn-name);
+
+.icn-lg{
+  font-size: 1.33333333em;
+}
