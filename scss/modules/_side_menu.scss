@@ -1,0 +1,96 @@
+.side-menu{
+  height: calc(100vh - 50px); // TODO: 50px 需要改成nav height變數
+  position: fixed;
+  top: $navbar-height;
+  z-index: ($zindex-navbar - 1);
+  background-color: $base;
+  box-shadow: $side-shadow;
+  margin-right: -10px;
+
+
+  &--wrapper{
+    position: absolute;
+    height: 100%;
+    top:0;
+    overflow: auto;
+    padding: .2em;
+    padding-right: .5em;
+  }
+
+  p{
+    text-align: justify;
+  }
+}
+
+.menu-title{
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0 .4em;
+
+  &__sub{
+    border-top: 1px solid $white;
+    padding-top: 1.5em;
+  }
+}
+
+.menu-tags{
+  .label{
+    display: inline-block;
+    font-size: 1em;
+    font-weight: $font-weight--light;
+    box-sizing: border-box;
+    margin: .2em;
+    padding: .3em;
+  }
+}
+
+.menu-avatar{
+  display: block;
+  position: relative;
+  width: 85%;
+  @extend %block_center;
+
+  img{
+    width: 95%;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    @extend %block_center;
+  }
+
+  a{
+    position: absolute;
+    top: calc(50% - 1em);
+    font-size: 2em;
+    width: 100%;
+    text-align: center;
+    opacity: 0;
+    &:hover{
+      text-decoration: none;
+    }
+  }
+
+  &:hover{
+    a{
+      opacity: 1;
+    }
+
+    img{
+      filter: blur(2px);
+      -webkit-filter: blur(2px);
+
+    }
+  }
+}
+
+.menu-items{
+  list-style: none;
+  padding-left: 0;
+
+  a{
+    color: $gray;
+    &:hover{
+      text-decoration: none;
+      color: $gray-darker;
+    }
+  }
+}

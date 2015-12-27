@@ -1,0 +1,15 @@
+@mixin label-variant-reverse($color){
+  border-width: 1px;
+  border-style: solid;
+  border-color: $color;
+  background-color: $white;
+  color: $color;
+  &[href] {
+    &:hover,
+    &:focus {
+      border-color: darken($color, 10%);
+      background-color: $color;
+      color: $white
+    }
+  }
+}

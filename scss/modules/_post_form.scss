@@ -1,0 +1,87 @@
+.post-form{
+  @extend %clearfix;
+  display: block;
+  background-color: $gray-lighter;
+  box-shadow: $form-shadow;
+
+  .media{
+    margin: 10px auto;
+  }
+
+  .post-avatar{
+    width: $img-sm;
+    height: $img-sm;
+  }
+
+  input, textarea{
+    border: 0;
+    box-shadow: none;
+
+    &:focus{
+      box-shadow: none;
+    }
+  }
+
+  input{
+    padding-top: .5em;
+  }
+  textarea{
+    resize: none;
+    min-height: 63px;
+  }
+  .post-tiltle-content{
+    background-color: $white;
+  }
+
+  &__conditions{
+      display: block;
+      margin-top: .3em;
+  }
+
+  .post-input{
+    &__conditions{
+      display: inline-block;
+      width: 40%;
+      &__large{
+        width: 82%;
+      }
+    }
+
+    &__conditionsBlock{
+      padding-left: .3em;
+      margin: .3em;
+
+      /* the icons */
+      a{
+        display: inline-block;
+        width: 1.5em;
+        margin-right: .3em;
+        margin-left: 0;
+        vertical-align: middle;
+        color: $gray-darker;
+        @extend %link-no-line;
+      }
+    }
+  }
+
+  button{
+    margin-top: .5em;
+  }
+}
+
+.post-id{
+  a{
+    @extend %link-no-line;
+  }
+  img, span{
+    display: inline-block;
+    margin-right: .3em;
+  }
+  width: 25%;
+}
+
+/* fix form exsitinig class (with plug-in) */
+
+.bootstrap .tags{
+  border-radius: 2px;
+}

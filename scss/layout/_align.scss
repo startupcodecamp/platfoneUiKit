@@ -1,0 +1,11 @@
+.after-header{
+  margin-top: $navbar-height + 10px;
+}
+
+.center-center{
+  @include centerer;
+}
+
+.center-warp{
+  position: relative;
+}

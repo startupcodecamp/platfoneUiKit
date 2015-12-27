@@ -1,0 +1,19 @@
+@mixin centerer {
+  // parent position relative
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin single-img-block {
+  text-align: center;
+  img{
+    display: block;
+    margin: auto;
+  }
+}
+
+@mixin flex-block {
+  display: flex;
+}

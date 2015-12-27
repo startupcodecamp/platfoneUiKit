@@ -1,0 +1,65 @@
+.post-view, .main-view{
+  // TODO: post-view 改成 main-view
+  @media (min-width: 1000px) {
+    margin-left: 20%;
+  }
+  @media (min-width: 1400px) {
+    margin-left: 25%;
+  }
+  @media (min-width: 1800px) {
+    margin-left: 30%;
+  }
+}
+
+.side-menu-toggle{
+  display: none;
+}
+
+/* mobile status */
+@media (max-width: $screen-md ) {
+  .side-menu-toggle{
+    display: block;
+    position: absolute;
+    z-index: ($zindex-navbar + 9);
+    font-size: 1.2em;
+    left: -5px;
+    cursor: pointer;
+  }
+
+  .side-menu__left{
+    width: 98%;
+    position: absolute;
+    left: -98%;
+    z-index: ($zindex-navbar + 10);
+    transition: all .8s ease-in-out;
+  }
+
+  .open .side-menu__left{
+    left: 0
+  }
+
+  .side-menu--wrapper{
+    width: 70%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 10em;
+  }
+
+  .menu-avatar{
+    width: 50%;
+  }
+
+  .post-view, .main-view{
+    width: 100%;
+  }
+
+  .post-form button{
+    width: 100%;
+  }
+
+  .post-view .bottom-line{
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}

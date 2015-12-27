@@ -1,0 +1,59 @@
+$label-border: 3px;
+
+.search-input-bar{
+  width: 50%;
+  // TODO:0 add RWD;
+  display: block;
+  margin: 15px auto;
+
+  input{
+    width: 100%;
+    border-radius: $border-radius-large;
+    border: 3px solid $brand-primary;
+  }
+
+  .search-btn{
+    width: initial;
+    position: absolute;
+    left: -3px;
+  }
+}
+
+.radio-input-img{
+  li{
+    list-style: none;
+    display: inline-block;
+    margin: 15px;
+
+    $items-num: 5;
+    @for $i from 0 to $items-num {
+      $red: random(256)-1;
+      $green: random(256)-1;
+      $blue: random(256)-1;
+      &:nth-child(#{$i}) {
+        label{
+          background-color: rgb($red, $green, $blue);
+          border: $label-border solid rgb($red, $green, $blue);
+        }
+      }
+    }
+
+  }
+
+  label{
+    display: block;
+    padding: 20px 15px;
+    color: #fff;
+    border-radius: 5px;
+    transition: all .5s case-in-out;
+  }
+
+  input{
+    display: none;
+  }
+
+  input:checked + label{
+    border: $label-border $brand-warning solid;
+  }
+
+}

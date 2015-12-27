@@ -1,0 +1,46 @@
+// Override Bootstrap variables here (defaults from bootstrap-sass v3.2.0.1):
+// When true, asset path helpers are used, otherwise regular url() is used
+// When there no function is defined, `fn('')` is parsed as string that equals the right hand side
+// NB: in Sass 3.3 there is a native function: function-exists(twbs-font-path)
+// $bootstrap-sass-asset-helper: (twbs-font-path("") != unquote('twbs-font-path("")'))
+
+$gray-darker:            lighten(#000, 13.5%); // #222
+$gray-dark:              lighten(#000, 20%);   // #333
+$gray:                   lighten(#000, 33.5%); // #555
+$gray-light:             lighten(#000, 46.7%); // #777
+$gray-lighter:           lighten(#000, 93.5%); // #eee
+
+$brand-primary: #48CFAD;
+$brand-primary-sat: #37BC9B;
+$brand-success: #A0D468;
+$brand-info: #4FC1E9;
+$brand-warning: #FFCE54;
+
+$font-url--opensans: 'https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700';
+@if variable-exists(font-url--google) {
+  @import url($font-url--google);
+}
+
+$font-family-sans-serif:  'Open Sans', "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+$border-radius-base:        2px;
+$border-radius-large:       3px;
+$border-radius-small:       1px;
+
+$btn-default-border:             transparent;
+
+$zindex-navbar:            1000;
+$zindex-dropdown:          1000;
+$zindex-popover:           1060;
+$zindex-tooltip:           1070;
+$zindex-navbar-fixed:      1030;
+$zindex-modal-background:  1040;
+$zindex-modal:             1050;
+
+$navbar-height:                    50px;
+$navbar-margin-bottom: 1em;
+$navbar-default-color:             #777777;
+$navbar-default-bg:                #FFFFFF;
+$navbar-default-link-color:                #4A4A4A;
+$navbar-default-brand-color:               #000000;
+$navbar-default-toggle-border-color:       transparent;
