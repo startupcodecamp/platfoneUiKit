@@ -1,9 +1,11 @@
 'use strict';
 
 var gulp       = require('gulp'),
+    del        = require('del'),
     sass       = require('gulp-sass'),
     maps       = require('gulp-sourcemaps'),
     swig       = require('gulp-swig'),
+    concat     = require('gulp-concat'),
     plumber    = require('gulp-plumber'),
     watch      = require('gulp-watch'),
     webserver  = require('gulp-webserver');
@@ -13,12 +15,29 @@ var opt = {
   'view': './views',
   'sass': './scss',
   'font': './scss/fonts',
-  'dist': './'
+  'img' : './images',
+  'dist': './public'
 };
+
+var scripts = [
+  './app.js',
+  './directives/**.js'
+];
+
+gulp.task("concatScripts", function () {
+  return gulp.src(scripts)
+  .pipe(maps.init({loadMaps: true}))
+  .pipe(concat('app.js'))
+  .pipe(maps.write())
+  .pipe(gulp.dest(opt.dist + '/js'));
+});
 
 gulp.task('access', function (){
   gulp.src(opt.font + '/**.**')
   .pipe(gulp.dest(opt.dist + '/css/fonts'));
+
+  gulp.src(opt.img + '/**', { base: './'})
+  .pipe(gulp.dest(opt.dist));
 });
 
 gulp.task('view', function (){
@@ -57,12 +76,17 @@ gulp.task('webserver', function() {
     }));
 });
 
-gulp.task('build',['sass', 'view', 'access'], function (){
+
+gulp.task('clean', function (){
+  del(opt.dist);
+});
+
+gulp.task('build',['sass', 'view', 'concatScripts'], function (){
 
 });
 
 
 
-gulp.task("default", function (){
+gulp.task('default', function (){
   gulp.start('webserver','build');
 });
