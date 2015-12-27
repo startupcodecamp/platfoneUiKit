@@ -3,15 +3,29 @@
 var gulp  = require('gulp'),
   sass    = require('gulp-sass'),
   maps    = require('gulp-sourcemaps'),
+  swig = require('gulp-swig'),
   plumber = require('gulp-plumber');
-  
+
 var opt = {
   'src': './',
+  'view': './views',
   'sass': './scss',
+  'font': './scss/fonts',
   'dist': './'
 };
 
-gulp.task("sass", function (){
+gulp.task('access', function (){
+  gulp.src(opt.font + '/**.**')
+  .pipe(gulp.dest(opt.dist + '/css/fonts'));
+});
+
+gulp.task('view', function (){
+  gulp.src(opt.view + '/*.html')
+  .pipe(swig())
+  .pipe(gulp.dest(opt.dist + '/css'));
+});
+
+gulp.task("sass", ['access'], function (){
   return gulp.src(opt.sass + '/style.scss')
   .pipe(plumber())
   .pipe(maps.init({loadMaps: true}))

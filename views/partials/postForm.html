@@ -1,0 +1,36 @@
+<div class="post-view" id="postView">
+<form class="post-form bottom-line" data-ng-controller="PostingsCreateController as postingsCreateCtrl" name="myPostSmForm">
+  <ul class="media-list">
+    <li class="media" style="overflow:visible">
+      <div class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="">
+          <img class="post-avatar" data-ng-src="{{myImageUrl || '//:0'}}">&nbsp;&nbsp;
+          <span>{{myDisplayName}}</span>&nbsp;
+          <span class="glyphicon glyphicon-chevron-down" data-ng-show="showDropdown"></span>
+        </a>
+        <ul class="dropdown-menu" data-ng-show="showDropdown" id="dropdownRole">
+          <li ng-class="">
+            <a data-ng-click="changePostingRole('', '{{displayName}}', '{{imageUrl}}')" href=""><img class="post-avatar" ng-src="{{imageUrl}}">&nbsp;{{displayName}}</a>
+          </li>
+          <li ng-class="">
+            <a data-ng-click="changePostingRole('{{companyId}}', '{{companyName}}', '{{companyImageUrl}}')" href=""><img class="post-avatar" ng-src="{{companyImageUrl}}">&nbsp;{{companyName}}</a>
+          </li>
+        </ul>
+      </div>
+    </li>
+    <li class="media">
+      <div class="tag-input">
+        <tags-input class="bootstrap custom-tags" ng-model="postingSm.topicTags" placeholder="tags"></tags-input>
+      </div>
+      <div class="post-tiltle-content">
+        <input class="form-control" name="title" ng-model="postingSm.title" placeholder="title" required type="text">
+        <p class="text-error" ng-show="myPostSmForm.title.$invalid && !myPostSmForm.title.$pristine">*</p>
+        <tooltip="{{postingSm.title.$valid ? '' : 'Please enter title'}}" tooltip-placement="below" tooltip-trigger="focus">
+          <textarea class="form-control" name="content" ng-focus="expandInputArea()" ng-model="postingSm.content" placeholder="content..." required rows="{{inputRowCount}}"></textarea>
+          <p class="text-error" ng-show="myPostSmForm.content.$invalid && !myPostSmForm.content.$pristine">need some content here :P</p>
+        </div>
+      </li>
+    </ul>
+    <button class="btn btn-primary pull-right" ng-click="postingsCreateCtrl.createPostingSm(postingSm,company);" ng-disabled="myForm.$invalid" type="button">post it</button>
+  </form>
+</div>

@@ -1,126 +1,46 @@
-<!--<section data-ng-controller="PostingsAllListController as postingsAllListCtrl">-->
-<!--  <div class="side-menu-toggle">-->
-<!--    <i class="icn icn-menu"></i>-->
-<!--  </div>-->
-<!--  <div class="row">-->
-      <!-- side menu -->
-<!--    <div class="col-md-2 side-menu side-menu__left">-->
-<!--      <div class="side-menu--wrapper">-->
-        <!-- profile avatar -->
-<!--        <div class="menu-avatar">-->
-<!--          <img ng-src="{{imageUrl}}">-->
-<!--          <a href=""><i class="icn icn-camera text-muted"></i></a>-->
-<!--        </div>-->
-<!--        <h3 class="menu-title">{{pageTopic}}</h3>-->
-<!--        <button class="btn btn-primary text-center center-block outline-style btn-follow"><i class="icn icn-ribbon"></i>&nbsp;Follow</button>-->
-<!--        <button class="btn btn-primary text-center center-block btn-follow-ing"><i class="icn icn-ribbon"></i>&nbsp;Following</button>-->
-<!--        <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>-->
-<!--        <div class="menu-tags">-->
-<!--          <a ng-href="#!/postings/topics/wanted" class="label label-default ng-binding" href="#!/postings/topics/wanted">wanted</a>-->
-<!--          <a ng-href="#!/postings/topics/offer" class="label label-default ng-binding" href="#!/postings/topics/offer">offer</a>-->
-<!--          <a ng-href="#!/postings/topics/ask" class="label label-default ng-binding" href="#!/postings/topics/ask">ask</a>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div id="postView" class="col-md-offset-2 col-md-9 post-view">-->
-        <!--form-->
-<!--        <form name="myPostSmForm" class="post-form bottom-line" data-ng-controller="PostingsCreateController as postingsCreateCtrl">-->
-<!--        <ul class="media-list">-->
-<!--          <li class="media" style="overflow:visible">-->
-<!--            <div class="dropdown">-->
-<!--              <a href="" class="dropdown-toggle" data-toggle="dropdown">-->
-<!--                <img class="post-avatar" data-ng-src="{{myImageUrl || '//:0'}}">&nbsp;&nbsp;-->
-<!--                <span>{{myDisplayName}}</span>&nbsp;-->
-<!--                <span data-ng-show="showDropdown" class="glyphicon glyphicon-chevron-down"></span>-->
-<!--              </a>-->
-<!--              <ul id="dropdownRole" class="dropdown-menu" data-ng-show="showDropdown">-->
-<!--                <li ng-class=""><a href="" data-ng-click="changePostingRole('', '{{displayName}}', '{{imageUrl}}')" ><img class="post-avatar" ng-src="{{imageUrl}}">&nbsp;{{displayName}}</a></li>-->
-<!--                <li ng-class=""><a href="" data-ng-click="changePostingRole('{{companyId}}', '{{companyName}}', '{{companyImageUrl}}')"><img class="post-avatar" ng-src="{{companyImageUrl}}">&nbsp;{{companyName}}</a></li>-->
-<!--              </ul>-->
-<!--            </div>-->
-<!--            <div class="media-body">-->
-<!--              <div class="row post-input__conditionsBlock">-->
-<!--                <a ng-click="toggleLocationInput()" href=""><i class="icn icn-map-pin icn-lg"></i></a>&nbsp;-->
-<!--                <a ng-click="togglePriceInput()" href=""><i class="icn icn-dollar icn-lg"></i></a>&nbsp;-->
-<!--                <a ng-click="toggleDateInput()" href=""><i class="icn icn-calendar icn-lg"></i></a>&nbsp;-->
-<!--              </div>-->
-<!--              <span ng-show="showLocationInput" class="post-form__conditions">-->
-<!--                <input type="text" class="form-control post-input__conditions__large"-->
-<!--                placeholder="location"-->
-<!--                name="location"-->
-<!--                ng-model="postingSm.location"-->
-<!--                required>-->
-<!--              </span>-->
-<!--              <span ng-show="showPriceInput" class="post-form__conditions">-->
-<!--                <input type="number" class="form-control post-input__conditions"-->
-<!--                  placeholder="min price"-->
-<!--                  name="minPrice"-->
-<!--                  ng-model="postingSm.priceMin"-->
-<!--                  ng-pattern = "/^[0-9]{1,10}(\.[0-9]+)?$/"-->
-<!--                  required>-->
-<!--                <span ng-show="myForm.price_field.$error.pattern">Not a valid number!</span>-->
-<!--               <input type="number" class="form-control post-input__conditions"-->
-<!--                  placeholder="max price"-->
-<!--                  name="maxPrice"-->
-<!--                  ng-model="postingSm.priceMax"-->
-<!--                  ng-pattern = "/^[0-9]{1,10}(\.[0-9]+)?$/"-->
-<!--                  required>-->
-<!--                <span ng-show="myForm.price_field.$error.pattern">Not a valid number!</span>-->
-<!--              </span>-->
-<!--              <span ng-show="showDateInput" class="post-form__conditions">-->
-<!--                <input type="date" class="form-control post-input__conditions"-->
-<!--                  placeholder="date start: mm/dd/yyyy"-->
-<!--                  name="startDate"-->
-<!--                  ng-model="postingSm.dateStart"-->
-<!--                  required></input>-->
-<!--                <input type="date" class="form-control post-input__conditions"-->
-<!--                  placeholder="date end: mm/dd/yyyy"-->
-<!--                  name="endDate"-->
-<!--                  ng-model="postingSm.dateEnd"-->
-<!--                  required></input>-->
-                 <!--<div class="input-group" style="position:relative">-->
-<!--                   <input type="text" class="form-control post-input__conditions" uib-datepicker-popup ng-model="dt" is-open="openDatePickers[0]" min-date="today" max-date="'2021-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />-->
-<!--                   <span style="position:absolute">-->
-<!--                   <button type="button" class="btn btn-default" ng-click="open($event, 0)"><i class="glyphicon glyphicon-calendar"></i></button>-->
-<!--                  </span>-->
-                <!--</div>-->
-<!--              </span>-->
-<!--            </div>-->
-<!--          </li>-->
-<!--          <li class="media">-->
-<!--            <div class="tag-input">-->
-<!--              <tags-input class="bootstrap custom-tags"-->
-<!--                ng-model="postingSm.topicTags"-->
-<!--                placeholder="tags">-->
-<!--              </tags-input>-->
-<!--            </div>-->
-<!--            <div class="post-tiltle-content">-->
-<!--              <input type="text" class="form-control"-->
-<!--                placeholder="title"-->
-<!--                name="title"-->
-<!--                ng-model="postingSm.title"-->
-<!--                required>-->
-<!--              <p ng-show="myPostSmForm.title.$invalid && !myPostSmForm.title.$pristine" class="text-error">*</p>-->
-<!--              <tooltip="{{postingSm.title.$valid ? '' : 'Please enter title'}}"-->
-<!--                tooltip-trigger="focus"-->
-<!--                tooltip-placement="below">-->
-<!--              <textarea ng-focus="expandInputArea()"-->
-<!--                class="form-control"-->
-<!--                name="content"-->
-<!--                rows="{{inputRowCount}}"-->
-<!--                placeholder="content..."-->
-<!--                ng-model="postingSm.content"-->
-<!--                required></textarea>-->
-<!--              <p ng-show="myPostSmForm.content.$invalid && !myPostSmForm.content.$pristine" class="text-error">need some content here :P</p>-->
-<!--            </div>-->
-<!--          </li>-->
-<!--        </ul>-->
-<!--        <button class="btn btn-primary pull-right" ng-disabled="myForm.$invalid" ng-click="postingsCreateCtrl.createPostingSm(postingSm,company);" type="button">post it</button>-->
-<!--      </form>-->
-<!--    </div>-->
-<!--</section>-->
+  <div class="side-menu-toggle">
+    <i class="icn icn-menu"></i>
+  </div>
+  <div class="row">
 
-
+    <div class="col-md-offset-2 col-md-9 post-view" id="postView">
+      form
+      <form class="post-form bottom-line" data-ng-controller="PostingsCreateController as postingsCreateCtrl" name="myPostSmForm">
+        <ul class="media-list">
+          <li class="media" style="overflow:visible">
+            <div class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="">
+                <img class="post-avatar" data-ng-src="{{myImageUrl || '//:0'}}">&nbsp;&nbsp;
+                <span>{{myDisplayName}}</span>&nbsp;
+                <span class="glyphicon glyphicon-chevron-down" data-ng-show="showDropdown"></span>
+              </a>
+              <ul class="dropdown-menu" data-ng-show="showDropdown" id="dropdownRole">
+                <li ng-class="">
+                  <a data-ng-click="changePostingRole('', '{{displayName}}', '{{imageUrl}}')" href=""><img class="post-avatar" ng-src="{{imageUrl}}">&nbsp;{{displayName}}</a>
+                </li>
+                <li ng-class="">
+                  <a data-ng-click="changePostingRole('{{companyId}}', '{{companyName}}', '{{companyImageUrl}}')" href=""><img class="post-avatar" ng-src="{{companyImageUrl}}">&nbsp;{{companyName}}</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="media">
+            <div class="tag-input">
+              <tags-input class="bootstrap custom-tags" ng-model="postingSm.topicTags" placeholder="tags"></tags-input>
+            </div>
+            <div class="post-tiltle-content">
+              <input class="form-control" name="title" ng-model="postingSm.title" placeholder="title" required type="text">
+              <p class="text-error" ng-show="myPostSmForm.title.$invalid && !myPostSmForm.title.$pristine">*</p>
+              <tooltip="{{postingSm.title.$valid ? '' : 'Please enter title'}}" tooltip-placement="below" tooltip-trigger="focus">
+                <textarea class="form-control" name="content" ng-focus="expandInputArea()" ng-model="postingSm.content" placeholder="content..." required rows="{{inputRowCount}}"></textarea>
+                <p class="text-error" ng-show="myPostSmForm.content.$invalid && !myPostSmForm.content.$pristine">need some content here :P</p>
+              </div>
+            </li>
+          </ul>
+          <button class="btn btn-primary pull-right" ng-click="postingsCreateCtrl.createPostingSm(postingSm,company);" ng-disabled="myForm.$invalid" type="button">post it</button>
+        </form>
+      </div>
+    </section>
 
 <!--Made by Henry Kaufman-->
 <div>
