@@ -5835,10 +5835,6 @@ button.close {
 body {
   background-color: #FAFAFA; }
 
-.bottom-line {
-  margin: 10px 5px 10px 5px;
-  padding: 5px; }
-
 .text-sm {
   font-size: .8em; }
 
@@ -6146,20 +6142,20 @@ body {
   display: inline-block;
   margin: 15px; }
   .radio-input-img li:nth-child(0) label {
-    background-color: #b0a60c;
-    border: 3px solid #b0a60c; }
+    background-color: #082904;
+    border: 3px solid #082904; }
   .radio-input-img li:nth-child(1) label {
-    background-color: #668f0a;
-    border: 3px solid #668f0a; }
+    background-color: #71e346;
+    border: 3px solid #71e346; }
   .radio-input-img li:nth-child(2) label {
-    background-color: #cc42db;
-    border: 3px solid #cc42db; }
+    background-color: #54ec87;
+    border: 3px solid #54ec87; }
   .radio-input-img li:nth-child(3) label {
-    background-color: #d6c4b8;
-    border: 3px solid #d6c4b8; }
+    background-color: #ac9fb0;
+    border: 3px solid #ac9fb0; }
   .radio-input-img li:nth-child(4) label {
-    background-color: #fabd68;
-    border: 3px solid #fabd68; }
+    background-color: #9dd1eb;
+    border: 3px solid #9dd1eb; }
 
 .radio-input-img label {
   display: block;
@@ -6184,6 +6180,10 @@ body {
 
 .navbar-default {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px; }
+
+.post {
+  margin: 10px 5px 10px 5px;
+  padding: 5px 2em; }
 
 .media-list {
   padding-top: 1em; }

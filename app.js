@@ -16,6 +16,10 @@ app.config(function ($routeProvider) {
             controller: 'MainController',
             templateUrl: 'posting.html'
         })
+        .when('/main',{
+          controller: 'MainController',
+          templateUrl: 'main.html'
+        })
         .otherwise({
             redirectTo: '/'
         })
