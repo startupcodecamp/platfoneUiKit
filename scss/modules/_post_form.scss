@@ -4,6 +4,9 @@
   background-color: $gray-lighter;
   box-shadow: $form-shadow;
 
+  .media{
+    margin: 10px auto;
+  }
 
   .post-avatar{
     width: $img-sm;
@@ -13,6 +16,18 @@
   input, textarea{
     border: 0;
     box-shadow: none;
+
+    &:focus{
+      box-shadow: none;
+    }
+  }
+
+  input{
+    padding-top: .5em;
+  }
+  textarea{
+    resize: none;
+    min-height: 63px;
   }
   .post-tiltle-content{
     background-color: $white;
@@ -28,7 +43,7 @@
       display: inline-block;
       width: 40%;
       &__large{
-        width: 82%; 
+        width: 82%;
       }
     }
 

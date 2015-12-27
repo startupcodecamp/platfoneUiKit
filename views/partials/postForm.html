@@ -1,25 +1,27 @@
 <div>
 <form class="post post-form">
 
-  <div class="form-group">
-      <label class="control-label" for="focusedInput">Post Author</label>
-      <input type="text" ng-model="post.author" class="form-control">
+  <!-- if not login -->
+  <div class="media">
+    <div class="media-left">
+      <a href="#">
+        <img class="post-avatar" src="images/withoutLogin.png" alt="avatar">
+      </a>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">Pleas Login</h4>
+    </div>
   </div>
 
   <div class="form-group">
-      <label class="control-label" for="focusedInput">Tags</label>
       <tag-manager tags="tags"></tag-manager>
   </div>
 
   <div class="form-group">
-      <label class="control-label" for="focusedInput">Post Title</label>
-      <input type="text" ng-model="post.title" class="form-control">
+      <input type="text" ng-model="post.title" class="form-control" placeholder="Title">
+      <textarea type="text" autocomplete="off" ng-model="post.description" class="form-control" placeholder="Say Something..."></textarea>
   </div>
 
-  <div class="form-group">
-      <label class="control-label" for="focusedInput">Post Description</label>
-      <input type="text" ng-model="post.description" class="form-control">
-  </div>
 
   <div class="form-group">
     <button class="btn btn-primary btn-block" ng-click="savePost(post)" type="button">POST</button>
