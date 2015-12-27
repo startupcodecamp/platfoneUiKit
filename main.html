@@ -1,189 +1,68 @@
-<!--<section data-ng-controller="PostingsAllListController as postingsAllListCtrl">-->
-<!--  <div class="side-menu-toggle">-->
-<!--    <i class="icn icn-menu"></i>-->
-<!--  </div>-->
-<!--  <div class="row">-->
-      <!-- side menu -->
-<!--    <div class="col-md-2 side-menu side-menu__left">-->
-<!--      <div class="side-menu--wrapper">-->
-        <!-- profile avatar -->
-<!--        <div class="menu-avatar">-->
-<!--          <img ng-src="{{imageUrl}}">-->
-<!--          <a href=""><i class="icn icn-camera text-muted"></i></a>-->
-<!--        </div>-->
-<!--        <h3 class="menu-title">{{pageTopic}}</h3>-->
-<!--        <button class="btn btn-primary text-center center-block outline-style btn-follow"><i class="icn icn-ribbon"></i>&nbsp;Follow</button>-->
-<!--        <button class="btn btn-primary text-center center-block btn-follow-ing"><i class="icn icn-ribbon"></i>&nbsp;Following</button>-->
-<!--        <p class="text-sm">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>-->
-<!--        <div class="menu-tags">-->
-<!--          <a ng-href="#!/postings/topics/wanted" class="label label-default ng-binding" href="#!/postings/topics/wanted">wanted</a>-->
-<!--          <a ng-href="#!/postings/topics/offer" class="label label-default ng-binding" href="#!/postings/topics/offer">offer</a>-->
-<!--          <a ng-href="#!/postings/topics/ask" class="label label-default ng-binding" href="#!/postings/topics/ask">ask</a>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    <div id="postView" class="col-md-offset-2 col-md-9 post-view">-->
-        <!--form-->
-<!--        <form name="myPostSmForm" class="post-form bottom-line" data-ng-controller="PostingsCreateController as postingsCreateCtrl">-->
-<!--        <ul class="media-list">-->
-<!--          <li class="media" style="overflow:visible">-->
-<!--            <div class="dropdown">-->
-<!--              <a href="" class="dropdown-toggle" data-toggle="dropdown">-->
-<!--                <img class="post-avatar" data-ng-src="{{myImageUrl || '//:0'}}">&nbsp;&nbsp;-->
-<!--                <span>{{myDisplayName}}</span>&nbsp;-->
-<!--                <span data-ng-show="showDropdown" class="glyphicon glyphicon-chevron-down"></span>-->
-<!--              </a>-->
-<!--              <ul id="dropdownRole" class="dropdown-menu" data-ng-show="showDropdown">-->
-<!--                <li ng-class=""><a href="" data-ng-click="changePostingRole('', '{{displayName}}', '{{imageUrl}}')" ><img class="post-avatar" ng-src="{{imageUrl}}">&nbsp;{{displayName}}</a></li>-->
-<!--                <li ng-class=""><a href="" data-ng-click="changePostingRole('{{companyId}}', '{{companyName}}', '{{companyImageUrl}}')"><img class="post-avatar" ng-src="{{companyImageUrl}}">&nbsp;{{companyName}}</a></li>-->
-<!--              </ul>-->
-<!--            </div>-->
-<!--            <div class="media-body">-->
-<!--              <div class="row post-input__conditionsBlock">-->
-<!--                <a ng-click="toggleLocationInput()" href=""><i class="icn icn-map-pin icn-lg"></i></a>&nbsp;-->
-<!--                <a ng-click="togglePriceInput()" href=""><i class="icn icn-dollar icn-lg"></i></a>&nbsp;-->
-<!--                <a ng-click="toggleDateInput()" href=""><i class="icn icn-calendar icn-lg"></i></a>&nbsp;-->
-<!--              </div>-->
-<!--              <span ng-show="showLocationInput" class="post-form__conditions">-->
-<!--                <input type="text" class="form-control post-input__conditions__large"-->
-<!--                placeholder="location"-->
-<!--                name="location"-->
-<!--                ng-model="postingSm.location"-->
-<!--                required>-->
-<!--              </span>-->
-<!--              <span ng-show="showPriceInput" class="post-form__conditions">-->
-<!--                <input type="number" class="form-control post-input__conditions"-->
-<!--                  placeholder="min price"-->
-<!--                  name="minPrice"-->
-<!--                  ng-model="postingSm.priceMin"-->
-<!--                  ng-pattern = "/^[0-9]{1,10}(\.[0-9]+)?$/"-->
-<!--                  required>-->
-<!--                <span ng-show="myForm.price_field.$error.pattern">Not a valid number!</span>-->
-<!--               <input type="number" class="form-control post-input__conditions"-->
-<!--                  placeholder="max price"-->
-<!--                  name="maxPrice"-->
-<!--                  ng-model="postingSm.priceMax"-->
-<!--                  ng-pattern = "/^[0-9]{1,10}(\.[0-9]+)?$/"-->
-<!--                  required>-->
-<!--                <span ng-show="myForm.price_field.$error.pattern">Not a valid number!</span>-->
-<!--              </span>-->
-<!--              <span ng-show="showDateInput" class="post-form__conditions">-->
-<!--                <input type="date" class="form-control post-input__conditions"-->
-<!--                  placeholder="date start: mm/dd/yyyy"-->
-<!--                  name="startDate"-->
-<!--                  ng-model="postingSm.dateStart"-->
-<!--                  required></input>-->
-<!--                <input type="date" class="form-control post-input__conditions"-->
-<!--                  placeholder="date end: mm/dd/yyyy"-->
-<!--                  name="endDate"-->
-<!--                  ng-model="postingSm.dateEnd"-->
-<!--                  required></input>-->
-                 <!--<div class="input-group" style="position:relative">-->
-<!--                   <input type="text" class="form-control post-input__conditions" uib-datepicker-popup ng-model="dt" is-open="openDatePickers[0]" min-date="today" max-date="'2021-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />-->
-<!--                   <span style="position:absolute">-->
-<!--                   <button type="button" class="btn btn-default" ng-click="open($event, 0)"><i class="glyphicon glyphicon-calendar"></i></button>-->
-<!--                  </span>-->
-                <!--</div>-->
-<!--              </span>-->
-<!--            </div>-->
-<!--          </li>-->
-<!--          <li class="media">-->
-<!--            <div class="tag-input">-->
-<!--              <tags-input class="bootstrap custom-tags"-->
-<!--                ng-model="postingSm.topicTags"-->
-<!--                placeholder="tags">-->
-<!--              </tags-input>-->
-<!--            </div>-->
-<!--            <div class="post-tiltle-content">-->
-<!--              <input type="text" class="form-control"-->
-<!--                placeholder="title"-->
-<!--                name="title"-->
-<!--                ng-model="postingSm.title"-->
-<!--                required>-->
-<!--              <p ng-show="myPostSmForm.title.$invalid && !myPostSmForm.title.$pristine" class="text-error">*</p>-->
-<!--              <tooltip="{{postingSm.title.$valid ? '' : 'Please enter title'}}"-->
-<!--                tooltip-trigger="focus"-->
-<!--                tooltip-placement="below">-->
-<!--              <textarea ng-focus="expandInputArea()"-->
-<!--                class="form-control"-->
-<!--                name="content"-->
-<!--                rows="{{inputRowCount}}"-->
-<!--                placeholder="content..."-->
-<!--                ng-model="postingSm.content"-->
-<!--                required></textarea>-->
-<!--              <p ng-show="myPostSmForm.content.$invalid && !myPostSmForm.content.$pristine" class="text-error">need some content here :P</p>-->
-<!--            </div>-->
-<!--          </li>-->
-<!--        </ul>-->
-<!--        <button class="btn btn-primary pull-right" ng-disabled="myForm.$invalid" ng-click="postingsCreateCtrl.createPostingSm(postingSm,company);" type="button">post it</button>-->
-<!--      </form>-->
-<!--    </div>-->
-<!--</section>-->
-
-
-
 <!--Made by Henry Kaufman-->
 <div>
-    <form>
-        <!--        The Post Author-->
-        <div class="form-group">
-            <label class="control-label" for="focusedInput">Post Author</label>
-            <input type="text" ng-model="post.author" class="form-control">
-        </div>
-        <!--        The Post Name-->
-        <div class="form-group">
-            <label class="control-label" for="focusedInput">Post Title</label>
-            <input type="text" ng-model="post.title" class="form-control">
-        </div>
-        <!--        The Post tags-->
-        <div class="form-group">
-            <label class="control-label" for="focusedInput">Tags</label>
-            <tag-manager tags="tags"></tag-manager>
-        </div>
-        <!--        The Post Description-->
-        <div class="form-group">
-            <label class="control-label" for="focusedInput">Post Description</label>
-            <input type="text" ng-model="post.description" class="form-control">
-        </div>
-        <br>
-        <!--        Save Post-->
-        <button ng-click="savePost(post)" class="btn btn-success btn-block">Save Post</button>
-    </form>
+  <form>
+    <!--        The Post Author-->
+    <div class="form-group">
+      <label class="control-label" for="focusedInput">Post Author</label>
+      <input class="form-control" ng-model="post.author" type="text">
+    </div>
+    <!--        The Post Name-->
+    <div class="form-group">
+      <label class="control-label" for="focusedInput">Post Title</label>
+      <input class="form-control" ng-model="post.title" type="text">
+    </div>
+    <!--        The Post tags-->
+    <div class="form-group">
+      <label class="control-label" for="focusedInput">Tags</label>
+      <tag-manager tags="tags"></tag-manager>
+    </div>
+    <!--        The Post Description-->
+    <div class="form-group">
+      <label class="control-label" for="focusedInput">Post Description</label>
+      <input class="form-control" ng-model="post.description" type="text">
+    </div>
+    <br>
+    <!--        Save Post-->
+    <button class="btn btn-success btn-block" ng-click="savePost(post)">Save Post</button>
+  </form>
 </div>
 <!--Repeats through all the posts that are found-->
 <div ng-repeat="post in posts">
-    <!--    The post author name -->
-    <h2>{{post.author}}</h2>
-    <p><strong>{{post.title}}</strong></p>
-    <div class="tags">
-        <span ng-repeat="tag in tags" class="tag" >{{tag.val}}</a>
-    </div>    <!--    The post description-->
-    <p>{{post.description}}</p>
-    <button ng-click="deletePost(post)" class="btn btn-danger">Delete Post</button>
-    <!--    The post votes-->
-    <span>{{post.votes}}</span>
-    <!--    Add a new vote-->
-    <button ng-click="addVote(post)" class="btn btn-primary">Add Vote</button>
-    <br>
-    <br>
-    <div class="panel panel-default" ng-repeat="comment in comments">
-        <div class="panel-body">
-            <a ng-href="https://twitter.com/{{comment.user}}">{{comment.user}}</a>
-        </div>
-        <div class="panel-footer">
-            {{comment.text}}
-            <br>
-            <button class="btn btn-danger" ng-click="removeComment(post, comment)">Remove Comment</button>
-        </div>
+  <!--    The post author name -->
+  <h2>{{post.author}}</h2>
+  <p>
+    <strong>{{post.title}}</strong>
+  </p>
+  <div class="tags">
+    <span class="tag" ng-repeat="tag in tags">{{tag.val}}</a>
+  </div>
+  <!--    The post description-->
+  <p>{{post.description}}</p>
+  <button class="btn btn-danger" ng-click="deletePost(post)">Delete Post</button>
+  <!--    The post votes-->
+  <span>{{post.votes}}</span>
+  <!--    Add a new vote-->
+  <button class="btn btn-primary" ng-click="addVote(post)">Add Vote</button>
+  <br>
+  <br>
+  <div class="panel panel-default" ng-repeat="comment in comments">
+    <div class="panel-body">
+      <a ng-href="https://twitter.com/{{comment.user}}">{{comment.user}}</a>
     </div>
-    <form>
-        <div class="input-group">
-            <input ng-model="comment.text" class="form-control">
-            <div class="input-group-btn">
-                <button ng-click="addComment(post, comment)" class="btn btn-success">Add Comment</button>
-            </div>
-        </div>
-    </form>
+    <div class="panel-footer">
+      {{comment.text}}
+      <br>
+      <button class="btn btn-danger" ng-click="removeComment(post, comment)">Remove Comment</button>
+    </div>
+  </div>
+  <form>
+    <div class="input-group">
+      <input class="form-control" ng-model="comment.text">
+      <div class="input-group-btn">
+        <button class="btn btn-success" ng-click="addComment(post, comment)">Add Comment</button>
+      </div>
+    </div>
+  </form>
 </div>
 <br>
 
@@ -192,6 +71,6 @@
 <!--Login in with Facebook-->
 <button class="btn btn-primary" ng-click="login('facebook')">Login with Facebook</button>
 
-
 <!--Displays who is currently logged in-->
-<span>Currently logged in as: {{ myUsername }}</span>
+<span>Currently logged in as:
+  {{ myUsername }}</span>

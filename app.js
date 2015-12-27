@@ -14,7 +14,11 @@ app.config(function ($routeProvider) {
     $routeProvider
         .when('/', {
             controller: 'MainController',
-            templateUrl: 'main.html'
+            templateUrl: 'posting.html'
+        })
+        .when('/main',{
+          controller: 'MainController',
+          templateUrl: 'main.html'
         })
         .otherwise({
             redirectTo: '/'
@@ -32,7 +36,7 @@ app.controller('MainController', function ($scope, $firebase, Posts) {
     //The function that runs when the user saves a post
     $scope.savePost = function (post) {
         if (post.author && post.description && post.title && $scope.authData) {
-            
+
             var tagObj = post.tags.reduce(function(o, v, i) {
                   o[i] = v;
                   return o;
@@ -57,7 +61,7 @@ app.controller('MainController', function ($scope, $firebase, Posts) {
             post.title = "";
             post.author = "";
             post.tags.length = 0;   // clears array more efficient
-            
+
         } else {
             //An alert to tell the user to log in or put something in all the fields
             alert('Sorry bro, you need all of those inputs to be filled or you need to be logged in!')
@@ -92,10 +96,10 @@ app.controller('MainController', function ($scope, $firebase, Posts) {
         } else {
             alert('You need to be logged in before doing that!')
         }
-        
+
         comment.text = "";
     }
-    
+
     $scope.removeComment = function(post, comment) {
         var commentForDeletion = new Firebase('https://platfonechat.firebaseio.com/' + post.$id + '/comments/' + comment.$id);
         commentForDeletion.remove();
@@ -115,10 +119,10 @@ app.controller('MainController', function ($scope, $firebase, Posts) {
             else {
                 $scope.loginType = loginType;
                // console.log('authData=', authData);
-            
+
                 //Set the authData we get to a global variable that can be used
                 $scope.authData = authData;
-                
+
                 if ( loginType === 'twitter' ){
                     $scope.myUsername = authData.twitter.username;
                 }
