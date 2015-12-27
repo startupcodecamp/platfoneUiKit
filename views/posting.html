@@ -1,2 +1,5 @@
-{% include "./partials/header.html" %}
-{% include "./partials/postForm.html" %}
+{% extends "./layouts/layout-default.html" %}
+
+{% block content %}
+  {% include "./partials/postForm.html" %}
+{% endblock %}

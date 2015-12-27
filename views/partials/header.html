@@ -8,15 +8,11 @@
     </button>
     <a class="navbar-brand" href="/"><img alt="logo" src="images/logos/logo.png"/>Platfone</a>
   </div>
-  <nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
-    <ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
-      <li ng-class="{active: $uiRoute}" ui-route="/signup">
-        <a href="/#!/signup">Sign Up</a>
-      </li>
-      <li class="divider-vertical"></li>
-      <li ng-class="{active: $uiRoute}" ui-route="/signin">
-        <a href="/#!/signin">Sign In</a>
-      </li>
-    </ul>
-  </nav>
+  <div class="collapse navbar-collapse" role="navigation">
+    <form class="nav navbar-form navbar-right">
+      <button class="btn btn-info" ng-click="login('twitter')">Login with Twitter</button>
+      <button class="btn btn-info" ng-click="login('facebook')">Login with Facebook</button>
+    </form>
+  </div>
+
 </div>
