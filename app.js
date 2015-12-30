@@ -9,6 +9,13 @@ app.factory('Posts', function ($firebase, fbURL) {
     return $firebase(new Firebase(fbURL)).$asArray();
 });
 
+app.factory("Auth", ["$firebaseAuth",
+  function($firebaseAuth) {
+    var ref = new Firebase('https://platfonechat.firebaseio.com');
+    return $firebaseAuth(ref);
+  }
+]);
+
 //Configuring the route providers to redirect to the right location
 app.config(function ($routeProvider) {
     $routeProvider
@@ -25,30 +32,76 @@ app.config(function ($routeProvider) {
         })
 });
 
-//The Main Controller that holds everything
-app.controller('MainController', function ($scope, $firebase, Posts) {
+app.filter('reverse', function() {
+  return function(items) {
+    return items.slice().reverse();
+  };
+});
 
+//The Main Controller that holds everything
+app.controller('MainController', function ($scope, $firebase, Auth, Posts, $window) {
+
+    $scope.auth = Auth;
+
+    // any time auth status updates, add the user data to scope
+    $scope.auth.$onAuth(function(authData) {
+      $scope.authData = authData;
+      
+      if ($scope.authData){
+        if ( $scope.authData.provider === 'twitter'){
+            $scope.oAuthDataType = $scope.authData.twitter;
+        } else {
+            $scope.oAuthDataType = $scope.authData.facebook;
+        }
+        
+        $scope.myUser = {
+            isAuthenticated : true  
+        };
+        console.log('$scope.authData=', $scope.authData);
+        console.log('$scope.oAuthDataType=', $scope.oAuthDataType);
+        $scope.myUsername = $scope.oAuthDataType.username;
+        $scope.profileImageUrl = $scope.oAuthDataType.profileImageURL;
+        $scope.displayName = $scope.oAuthDataType.displayName;
+        $scope.loginType = $scope.authData.provider;
+      }
+    });
+
+    
     //Set the posts we get to a global variable that can be used
     $scope.posts = Posts;
-    $scope.myUsername = "nobody";
+   
+    console.log('$scope.posts=', $scope.posts);
+    if ( !$scope.myUsername ) $scope.myUsername = '';
+    
     $scope.tags = [];
+    
+    $scope.profileImageUrl = (!$scope.oAuthDataType) ? 'images/withoutLogin.png' : $scope.oAuthDataType.profileImageURL;
+    
+    console.log('$scope.profileImageUrl=', $scope.profileImageUrl);
+    
+    
+    if (!$scope.myUser) {
+        $scope.myUser = {
+            isAuthenticated : false  
+        };
+    }    
 
     //The function that runs when the user saves a post
     $scope.savePost = function (post) {
-        if (post.author && post.description && post.title && $scope.authData) {
+        if (post.description && post.title && $scope.authData) {
 
-            var tagObj = post.tags.reduce(function(o, v, i) {
-                  o[i] = v;
-                  return o;
-                }, {});
+            // var tagObj = post.tags.reduce(function(o, v, i) {
+            //       o[i] = v;
+            //       return o;
+            //     }, {});
             //Actually adding the posts to the Firebase
             Posts.$add({
-                author: post.author,
+                author: $scope.displayName,
                 title: post.title,
                 description: post.description,
                 //Setting the post votes
                 votes: 0,
-                tags: tagObj,
+                //tags: tagObj,
                 //Getting the current user
                 user: $scope.myUsername,
                 loginType: $scope.loginType
@@ -60,7 +113,7 @@ app.controller('MainController', function ($scope, $firebase, Posts) {
             post.url = "";
             post.title = "";
             post.author = "";
-            post.tags.length = 0;   // clears array more efficient
+            //post.tags.length = 0;   // clears array more efficient
 
         } else {
             //An alert to tell the user to log in or put something in all the fields
@@ -82,7 +135,7 @@ app.controller('MainController', function ($scope, $firebase, Posts) {
         var postForDeletion = new Firebase('https://platfonechat.firebaseio.com/' + post.$id);
         //Removing it from Firebase
         postForDeletion.remove();
-    }
+    };
 
     $scope.addComment = function (post, comment) {
         if ($scope.authData) {
@@ -98,17 +151,24 @@ app.controller('MainController', function ($scope, $firebase, Posts) {
         }
 
         comment.text = "";
-    }
+    };
 
     $scope.removeComment = function(post, comment) {
         var commentForDeletion = new Firebase('https://platfonechat.firebaseio.com/' + post.$id + '/comments/' + comment.$id);
         commentForDeletion.remove();
+    };
+
+
+    $scope.logout = function (){
+        $scope.auth.$unauth()
+        $window.location.reload();
     }
 
     //Logging the user in
     $scope.login = function (loginType) {
         //Creating a refrence URL with Firebase
         var ref = new Firebase('https://platfonechat.firebaseio.com/');
+        
         //Doing the OAuth popup
         ref.authWithOAuthPopup(loginType, function (error, authData) {
             //If there is an error
@@ -118,20 +178,30 @@ app.controller('MainController', function ($scope, $firebase, Posts) {
             //If the user is logged in correctly
             else {
                 $scope.loginType = loginType;
-               // console.log('authData=', authData);
+                console.log('authData=', authData);
 
                 //Set the authData we get to a global variable that can be used
                 $scope.authData = authData;
-
+                
                 if ( loginType === 'twitter' ){
-                    $scope.myUsername = authData.twitter.username;
+                    $scope.oAuthDataType = authData.twitter;
                 }
                 else {
-                    $scope.myUsername = authData.facebook.displayName;
+                    $scope.oAuthDataType = authData.facebook;
                 }
+                
+                $scope.myUsername = $scope.oAuthDataType.username;
+                $scope.profileImageUrl = $scope.oAuthDataType.profileImageURL;
+                $scope.displayName = $scope.oAuthDataType.displayName;
+                
+                $scope.myUser.isAuthenticated = true;
+                
+                console.log('$scope.authData=', $scope.authData);
+                console.log('$scope.myUser=', $scope.myUser);
+                
                 $scope.$apply();
             }
-            console.log('$scope.myUsername=', $scope.myUsername);
+            //console.log('$scope.myUsername=', $scope.myUsername);
         });
     }
 });
