@@ -1,6 +1,6 @@
 {% raw %}
 <section data-ng-controller="MainController as mainCtrlz">
-    
+
 <div class="navbar navbar-fixed-top navbar-default">
     <div class="container" >
         <div class="navbar-header">
@@ -53,11 +53,26 @@
     </div>
     </form>
 </div>
-    
-    <div ng-repeat="post in posts | reverse">
-        {{post.author}}<br/>
-        {{post.description}}<br/>
-        
-    </div>
+
+  <div ng-repeat="post in posts | reverse">
+    <div class="post post-item">
+      <div class="media">
+          <div class="media-left">
+          <a href="#">
+              <img class="post-avatar" ng-src="{{post.profileImageUrl}}" alt="avatar">
+          </a>
+          </div>
+          <div class="media-body">
+              <h4 class="media-heading">{{post.author}}</h4>
+          </div>
+      </div>
+      <div class="media-heading ext-muted post-item__titile">{{post.title}}</div>
+
+      <p>
+        {{post.description}}
+      </p>
+      </div>
+
+  </div>
 </section>
 {% endraw %}
