@@ -104,7 +104,7 @@ app.controller('MainController', function ($scope, $firebase, Auth, Posts, $wind
                 votes: 0,
                 //tags: tagObj,
                 //Getting the current user
-                user: $scope.myUsername,
+                user: (!$scope.myUsername) ? '' : $scope.myUsername,
                 loginType: $scope.loginType
             });
 
