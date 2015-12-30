@@ -1,13 +1,11 @@
-
-.media-list{
-  padding-top: 1em;
+.post-avatar{
+  width: $img-sm;
+  height: $img-sm;
 }
-
 .post-item{
-  .post-avatar{
-    width: $img-sm;
-    height: $img-sm;
-  }
+  padding: 1em 1.5em 2em;
+  border-bottom: 1px solid $gray-lighter;
+
   .media-left a{
     display: block;
   }
@@ -139,5 +137,3 @@
     padding-left: 5px;
   }
 }
-
-

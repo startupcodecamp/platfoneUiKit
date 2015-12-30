@@ -3,13 +3,12 @@
   display: block;
   background-color: $gray-lighter;
   box-shadow: $form-shadow;
+  margin-bottom: 2em;
 
   .media{
     margin: 10px auto;
   }
-  .media-left, .media-right, .media-body {
-    vertical-align: middle;
-  }
+
 
   .post-avatar{
     width: $img-sm;
