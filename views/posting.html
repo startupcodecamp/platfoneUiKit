@@ -1,5 +1,63 @@
-{% extends "./layouts/layout-default.html" %}
+{% raw %}
+<section data-ng-controller="MainController as mainCtrlz">
+    
+<div class="navbar navbar-fixed-top navbar-default">
+    <div class="container" >
+        <div class="navbar-header">
+            <button class="navbar-toggle" data-ng-click="toggleCollapsibleMenu()" type="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href=""><img alt="logo" src="images/logos/logo.png"/>Platfone</a>
+        </div>
+        <div class="collapse navbar-collapse" role="navigation">
+            <form class="nav navbar-form navbar-right">
+            <div ng-show="!myUser.isAuthenticated">
+                <button class="btn btn-info" ng-click="login('twitter')">Login with Twitter</button>
+                <button class="btn btn-info" ng-click="login('facebook')">Login with Facebook</button>
+            </div>
+            <div ng-show="myUser.isAuthenticated">
+                Hi {{displayName}}!
+                <button class="btn btn-info" ng-click="logout()">Logout</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
 
-{% block content %}
-  {% include "./partials/postForm.html" %}
-{% endblock %}
+<div>
+    <form class="post post-form">
+
+    <!-- if not login -->
+    <div class="media">
+        <div class="media-left">
+        <a href="#">
+            <img class="post-avatar" ng-src="{{profileImageUrl}}" alt="avatar">
+        </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">{{displayName}}</h4>
+        </div>
+    </div>
+    <div class="form-group">
+        <tag-manager tags="tags"></tag-manager>
+    </div>
+    <div class="form-group">
+        <input type="text" ng-model="post.title" class="form-control" placeholder="Title">
+        <textarea type="text" autocomplete="off" ng-model="post.description" class="form-control" placeholder="Say Something..."></textarea>
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary btn-block" ng-click="savePost(post)" type="button">POST</button>
+    </div>
+    </form>
+</div>
+    
+    <div ng-repeat="post in posts | reverse">
+        {{post.author}}<br/>
+        {{post.description}}<br/>
+        
+    </div>
+</section>
+{% endraw %}
