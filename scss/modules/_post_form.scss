@@ -7,6 +7,9 @@
   .media{
     margin: 10px auto;
   }
+  .media-left, .media-right, .media-body {
+    vertical-align: middle;
+  }
 
   .post-avatar{
     width: $img-sm;
