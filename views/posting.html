@@ -71,9 +71,14 @@
       <p>
         {{post.description}}
       </p>
-      <span>{{post.votes}}</span>
-      <button class="btn btn-primary" ng-click="addVote(post)">Add Vote</button>
+
+      <div class="post-item__actions">
+        <a ng-click="addVote(post)" class="action-love"><i class="icn icn-heart"></i> {{post.votes}}</a>
+        <a class="action-default"><i class="icn icn-chat"></i> Comment</a>
       </div>
+
+
+    </div>
 
   </div>
 </section>

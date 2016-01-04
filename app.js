@@ -124,10 +124,18 @@ app.controller('MainController', function ($scope, $firebase, Auth, Posts, $wind
 
     //Adding a vote
     $scope.addVote = function (post) {
-        //Increment the number
+      // if login
+      if ($scope.authData) {
+        //if not vote yet.
         post.votes++;
-        //Save to the Firebase
+        //icon to solid
+        // if vote already
+        //post.votes--;
+        //icon to hollow
+
         Posts.$save(post);
+      }
+
     }
 
     //Deleting a post
