@@ -4,10 +4,21 @@ var app = angular.module('reddit-clone', ['ngRoute', 'firebase']);
 //The Firebase URL set as a Constant
 app.constant('fbURL', 'https://platfonechat.firebaseio.com/');
 
-//Creating a factory so we can use the Firebase URL
-app.factory('Posts', function ($firebase, fbURL) {
-    return $firebase(new Firebase(fbURL)).$asArray();
+//The Firebase URL set as a Constant
+app.constant('fbURLPosts', 'https://platfonechat.firebaseio.com/posts/');
+
+app.service('MyService', function(){
+   this.sayHello = function(){
+     console.log('hello JJ');  
+   };
 });
+
+
+//Creating a factory so we can use the Firebase URL
+app.factory('Posts', function ($firebase, fbURL, fbURLPosts) {
+    return $firebase(new Firebase(fbURLPosts)).$asArray();
+});
+
 
 app.factory("Auth", ["$firebaseAuth",
   function($firebaseAuth) {
@@ -15,6 +26,7 @@ app.factory("Auth", ["$firebaseAuth",
     return $firebaseAuth(ref);
   }
 ]);
+
 
 //Configuring the route providers to redirect to the right location
 app.config(function ($routeProvider) {
@@ -38,9 +50,11 @@ app.filter('reverse', function() {
   };
 });
 
-//The Main Controller that holds everything
-app.controller('MainController', function ($scope, $firebase, Auth, Posts, $window) {
 
+//The Main Controller that holds everything
+app.controller('MainController', function ($scope, $firebase, Auth, Posts, $window, MyService) {
+
+    MyService.sayHello();
     $scope.auth = Auth;
 
     // any time auth status updates, add the user data to scope
@@ -59,14 +73,14 @@ app.controller('MainController', function ($scope, $firebase, Auth, Posts, $wind
         };
         console.log('$scope.authData=', $scope.authData);
         console.log('$scope.oAuthDataType=', $scope.oAuthDataType);
-        $scope.myUsername = $scope.oAuthDataType.username;
+        
+        $scope.myUsername = ($scope.oAuthDataType.username) ? '' : $scope.oAuthDataType.username;
         $scope.profileImageUrl = $scope.oAuthDataType.profileImageURL;
         $scope.displayName = $scope.oAuthDataType.displayName;
         $scope.loginType = $scope.authData.provider;
       }
     });
 
-    
     //Set the posts we get to a global variable that can be used
     $scope.posts = Posts;
    
@@ -74,12 +88,8 @@ app.controller('MainController', function ($scope, $firebase, Auth, Posts, $wind
     if ( !$scope.myUsername ) $scope.myUsername = '';
     
     $scope.tags = [];
-    
     $scope.profileImageUrl = (!$scope.oAuthDataType) ? 'images/withoutLogin.png' : $scope.oAuthDataType.profileImageURL;
-    
-    console.log('$scope.profileImageUrl=', $scope.profileImageUrl);
-    
-    
+        
     if (!$scope.myUser) {
         $scope.myUser = {
             isAuthenticated : false  
@@ -89,7 +99,7 @@ app.controller('MainController', function ($scope, $firebase, Auth, Posts, $wind
     //The function that runs when the user saves a post
     $scope.savePost = function (post) {
         if (post.description && post.title && $scope.authData) {
-
+            console.log('post.tags=', $scope.tags);
             // var tagObj = post.tags.reduce(function(o, v, i) {
             //       o[i] = v;
             //       return o;
@@ -99,9 +109,10 @@ app.controller('MainController', function ($scope, $firebase, Auth, Posts, $wind
                 author: $scope.displayName,
                 title: post.title,
                 description: post.description,
+                profileImageUrl: $scope.profileImageUrl,
                 //Setting the post votes
                 votes: 0,
-                //tags: tagObj,
+                tags: $scope.tags,
                 //Getting the current user
                 user: $scope.myUsername,
                 loginType: $scope.loginType
@@ -113,7 +124,7 @@ app.controller('MainController', function ($scope, $firebase, Auth, Posts, $wind
             post.url = "";
             post.title = "";
             post.author = "";
-            //post.tags.length = 0;   // clears array more efficient
+            $scope.tags.length = 0;   // clears array more efficient
 
         } else {
             //An alert to tell the user to log in or put something in all the fields
@@ -190,7 +201,7 @@ app.controller('MainController', function ($scope, $firebase, Auth, Posts, $wind
                     $scope.oAuthDataType = authData.facebook;
                 }
                 
-                $scope.myUsername = $scope.oAuthDataType.username;
+                $scope.myUsername = ($scope.oAuthDataType.username) ? '' : $scope.oAuthDataType.username;
                 $scope.profileImageUrl = $scope.oAuthDataType.profileImageURL;
                 $scope.displayName = $scope.oAuthDataType.displayName;
                 
