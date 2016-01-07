@@ -60,16 +60,16 @@ app.controller('MainController', function ($scope, $firebase, Auth, Posts, $wind
     // any time auth status updates, add the user data to scope
     $scope.auth.$onAuth(function(authData) {
       $scope.authData = authData;
-
+      
       if ($scope.authData){
         if ( $scope.authData.provider === 'twitter'){
             $scope.oAuthDataType = $scope.authData.twitter;
         } else {
             $scope.oAuthDataType = $scope.authData.facebook;
         }
-
+        
         $scope.myUser = {
-            isAuthenticated : true
+            isAuthenticated : true  
         };
         console.log('$scope.authData=', $scope.authData);
         console.log('$scope.oAuthDataType=', $scope.oAuthDataType);
@@ -81,44 +81,20 @@ app.controller('MainController', function ($scope, $firebase, Auth, Posts, $wind
       }
     });
 
-<<<<<<< HEAD
-
-||||||| merged common ancestors
-    
-=======
->>>>>>> 6418578d88ca017513d42be8573c8379382cc0d5
     //Set the posts we get to a global variable that can be used
     $scope.posts = Posts;
-
+   
     console.log('$scope.posts=', $scope.posts);
     if ( !$scope.myUsername ) $scope.myUsername = '';
-
+    
     $scope.tags = [];
-<<<<<<< HEAD
-
-||||||| merged common ancestors
-    
-=======
->>>>>>> 6418578d88ca017513d42be8573c8379382cc0d5
     $scope.profileImageUrl = (!$scope.oAuthDataType) ? 'images/withoutLogin.png' : $scope.oAuthDataType.profileImageURL;
-<<<<<<< HEAD
-
-    console.log('$scope.profileImageUrl=', $scope.profileImageUrl);
-
-
-||||||| merged common ancestors
-    
-    console.log('$scope.profileImageUrl=', $scope.profileImageUrl);
-    
-    
-=======
         
->>>>>>> 6418578d88ca017513d42be8573c8379382cc0d5
     if (!$scope.myUser) {
         $scope.myUser = {
-            isAuthenticated : false
+            isAuthenticated : false  
         };
-    }
+    }    
 
     //The function that runs when the user saves a post
     $scope.savePost = function (post) {
@@ -203,7 +179,7 @@ app.controller('MainController', function ($scope, $firebase, Auth, Posts, $wind
     $scope.login = function (loginType) {
         //Creating a refrence URL with Firebase
         var ref = new Firebase('https://platfonechat.firebaseio.com/');
-
+        
         //Doing the OAuth popup
         ref.authWithOAuthPopup(loginType, function (error, authData) {
             //If there is an error
@@ -217,31 +193,23 @@ app.controller('MainController', function ($scope, $firebase, Auth, Posts, $wind
 
                 //Set the authData we get to a global variable that can be used
                 $scope.authData = authData;
-
+                
                 if ( loginType === 'twitter' ){
                     $scope.oAuthDataType = authData.twitter;
                 }
                 else {
                     $scope.oAuthDataType = authData.facebook;
                 }
-<<<<<<< HEAD
-
-                $scope.myUsername = $scope.oAuthDataType.username;
-||||||| merged common ancestors
-                
-                $scope.myUsername = $scope.oAuthDataType.username;
-=======
                 
                 $scope.myUsername = ($scope.oAuthDataType.username) ? '' : $scope.oAuthDataType.username;
->>>>>>> 6418578d88ca017513d42be8573c8379382cc0d5
                 $scope.profileImageUrl = $scope.oAuthDataType.profileImageURL;
                 $scope.displayName = $scope.oAuthDataType.displayName;
-
+                
                 $scope.myUser.isAuthenticated = true;
-
+                
                 console.log('$scope.authData=', $scope.authData);
                 console.log('$scope.myUser=', $scope.myUser);
-
+                
                 $scope.$apply();
             }
             //console.log('$scope.myUsername=', $scope.myUsername);
