@@ -29,8 +29,9 @@
     a{
       margin: 5px .5em;
       padding: 5px 15px;
-      border: 1px solid $brand-info;
-      color: $brand-info;
+      border-radius: 3px;
+      color: $white;
+      background-color: $brand-info;
 
       &:hover{
         text-decoration: none;
@@ -38,8 +39,11 @@
 
       @for $i from 1 through length($ram-colors) {
         &:nth-child(#{length($ram-colors)}n+#{$i}){
-          border-color: nth($ram-colors, $i);
-          color: nth($ram-colors, $i);
+          background-color: nth($ram-colors, $i);
+
+          &:hover{
+            background-color: saturate(nth($ram-colors, $i), 20%);
+          }
         }
       }
 
