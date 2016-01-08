@@ -16,6 +16,8 @@ $brand-success: #A0D468;
 $brand-info: #4FC1E9;
 $brand-warning: #FFCE54;
 
+//$brand-danger: #d9534f ;
+
 $font-url--opensans: 'https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700';
 @if variable-exists(font-url--google) {
   @import url($font-url--google);

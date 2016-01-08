@@ -73,9 +73,16 @@
       </p>
 
       <div class="post-item__actions">
-        <a ng-click="addVote(post)" class="action-love"><i class="icn icn-heart"></i> {{post.votes}}</a>
-        <a class="action-default"><i class="icn icn-chat"></i> Comment</a>
+        <a ng-click="addVote(post)" class="action action-love"><i class="icn icn-heart"></i> {{post.votes}}</a>
+        <a class="action action-default"><i class="icn icn-chat"></i> Comment</a>
       </div>
+
+      <form class="post-item__comment">
+        <div class="input-group">
+          <input class="form-control" ng-model="comment.text">
+          <span class="input-group-addon btn btn-success" ng-click="addComment(post, comment)">Add Comment</span>
+        </div>
+      </form>
 
 
     </div>

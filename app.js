@@ -101,7 +101,7 @@ app.controller('MainController', function ($scope, $firebase, Auth, Posts, $wind
                 description: post.description,
                 profileImageUrl: $scope.profileImageUrl,
                 //Setting the post votes
-                votes: 0,
+                votes: 0,  // if votes = 0 hide the number.
                 //tags: tagObj,
                 //Getting the current user
                 user: (!$scope.myUsername) ? '' : $scope.myUsername,

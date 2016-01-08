@@ -1,0 +1,19 @@
+.action{
+  @extend %transistion_default;
+  margin-right: 1em;
+}
+
+.action-love{
+  &:hover{
+    color: $brand-danger;
+    .icn-heart:before{
+      content: '\e90e';
+    }
+  }
+}
+
+.action-default{
+  &:hover{
+    color: $brand-info;
+  }
+}
