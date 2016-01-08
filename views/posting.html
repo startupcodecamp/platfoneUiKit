@@ -1,5 +1,5 @@
 {% raw %}
-<section data-ng-controller="MainController as mainCtrlz">  
+<section data-ng-controller="MainController as mainCtrlz">
     <div class="navbar navbar-fixed-top navbar-default">
         <div class="container" >
             <div class="navbar-header">
@@ -29,11 +29,19 @@
         <post-form oauth-type="oAuthDataType"></post-form>
     </div>
     <div ng-repeat="post in posts | reverse">
-        <div class="post post-form">
-            <div class="media">
-                <img class="post-avatar" ng-src="{{post.profileImageUrl}}" >&nbsp;{{post.author}}<br/>
-                {{post.description}}<br/>
+        <div class="post post-item">
+          <div class="media">
+            <div class="media-left">
+              <img class="post-avatar" ng-src="{{post.profileImageUrl}}" alt="avatar">
             </div>
+            <div class="media-body">
+                <h4 class="media-heading">{{post.author}}</h4>
+            </div>
+          </div>
+          <div class="media-heading ext-muted post-item__titile">{{post.title}}</div>
+          <p>
+            {{post.description}}
+          </p>
         </div>
     </div>
 </section>

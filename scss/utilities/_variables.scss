@@ -25,3 +25,19 @@ $base: #FAFAFA;
 $side-shadow: 1px 0px 1px 0px rgba(0,0,0,0.24);
 $form-shadow: 0px 0px 1px 0px rgba(0,0,0,0.26);
 $card-shadow: 0px 0px 1px 0px rgba(0,0,0,0.26);
+
+
+$ui-colors: (
+	default : $brand-primary,
+	success : $brand-success,
+	error   : $brand-danger,
+	warning : $brand-warning,
+	info    : $brand-info
+);
+
+$ram-colors:  #4FC5C7,
+  #97EC71,
+  #FA7DA6,
+  #A1DEC3,
+	#8A8CB2,
+  #DBF977;

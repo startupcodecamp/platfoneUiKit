@@ -9,7 +9,7 @@ app.constant('fbURLPosts', 'https://platfonechat.firebaseio.com/posts/');
 
 app.service('MyService', function(){
    this.sayHello = function(){
-     console.log('hello JJ');  
+     console.log('hello JJ');
    };
 });
 
@@ -60,20 +60,20 @@ app.controller('MainController', function ($scope, $firebase, Auth, Posts, $wind
     // any time auth status updates, add the user data to scope
     $scope.auth.$onAuth(function(authData) {
       $scope.authData = authData;
-      
+
       if ($scope.authData){
         if ( $scope.authData.provider === 'twitter'){
             $scope.oAuthDataType = $scope.authData.twitter;
         } else {
             $scope.oAuthDataType = $scope.authData.facebook;
         }
-        
+
         $scope.myUser = {
-            isAuthenticated : true  
+            isAuthenticated : true
         };
         console.log('$scope.authData=', $scope.authData);
         console.log('$scope.oAuthDataType=', $scope.oAuthDataType);
-        
+
         $scope.myUsername = ($scope.oAuthDataType.username) ? '' : $scope.oAuthDataType.username;
         $scope.profileImageUrl = $scope.oAuthDataType.profileImageURL;
         $scope.displayName = $scope.oAuthDataType.displayName;
@@ -83,18 +83,18 @@ app.controller('MainController', function ($scope, $firebase, Auth, Posts, $wind
 
     //Set the posts we get to a global variable that can be used
     $scope.posts = Posts;
-   
+
     console.log('$scope.posts=', $scope.posts);
     if ( !$scope.myUsername ) $scope.myUsername = '';
-    
+
     $scope.tags = [];
     $scope.profileImageUrl = (!$scope.oAuthDataType) ? 'images/withoutLogin.png' : $scope.oAuthDataType.profileImageURL;
-        
+
     if (!$scope.myUser) {
         $scope.myUser = {
-            isAuthenticated : false  
+            isAuthenticated : false
         };
-    }    
+    }
 
     //The function that runs when the user saves a post
     $scope.savePost = function (post) {
@@ -113,8 +113,9 @@ app.controller('MainController', function ($scope, $firebase, Auth, Posts, $wind
                 //Setting the post votes
                 votes: 0,
                 tags: $scope.tags,
+
                 //Getting the current user
-                user: $scope.myUsername,
+                user: (!$scope.myUsername) ? '' : $scope.myUsername,
                 loginType: $scope.loginType
             });
 
@@ -134,10 +135,18 @@ app.controller('MainController', function ($scope, $firebase, Auth, Posts, $wind
 
     //Adding a vote
     $scope.addVote = function (post) {
-        //Increment the number
+      // if login
+      if ($scope.authData) {
+        //if not vote yet.
         post.votes++;
-        //Save to the Firebase
+        //icon to solid
+        // if vote already
+        //post.votes--;
+        //icon to hollow
+
         Posts.$save(post);
+      }
+
     }
 
     //Deleting a post
@@ -179,7 +188,7 @@ app.controller('MainController', function ($scope, $firebase, Auth, Posts, $wind
     $scope.login = function (loginType) {
         //Creating a refrence URL with Firebase
         var ref = new Firebase('https://platfonechat.firebaseio.com/');
-        
+
         //Doing the OAuth popup
         ref.authWithOAuthPopup(loginType, function (error, authData) {
             //If there is an error
@@ -193,23 +202,23 @@ app.controller('MainController', function ($scope, $firebase, Auth, Posts, $wind
 
                 //Set the authData we get to a global variable that can be used
                 $scope.authData = authData;
-                
+
                 if ( loginType === 'twitter' ){
                     $scope.oAuthDataType = authData.twitter;
                 }
                 else {
                     $scope.oAuthDataType = authData.facebook;
                 }
-                
+
                 $scope.myUsername = ($scope.oAuthDataType.username) ? '' : $scope.oAuthDataType.username;
                 $scope.profileImageUrl = $scope.oAuthDataType.profileImageURL;
                 $scope.displayName = $scope.oAuthDataType.displayName;
-                
+
                 $scope.myUser.isAuthenticated = true;
-                
+
                 console.log('$scope.authData=', $scope.authData);
                 console.log('$scope.myUser=', $scope.myUser);
-                
+
                 $scope.$apply();
             }
             //console.log('$scope.myUsername=', $scope.myUsername);
