@@ -1,4 +1,5 @@
 .action{
+  // for single action element
   @extend %transistion_default;
   margin-right: 1em;
 }
@@ -15,5 +16,33 @@
 .action-default{
   &:hover{
     color: $brand-info;
+  }
+}
+
+// for action modules
+
+.tags-action{
+  .tags{
+    // for the tags list
+    padding: .5em 0;
+    margin-bottom: .5em;
+    a{
+      margin: 5px .5em;
+      padding: 5px 15px;
+      border: 1px solid $brand-info;
+      color: $brand-info;
+
+      &:hover{
+        text-decoration: none;
+      }
+
+      @for $i from 1 through length($ram-colors) {
+        &:nth-child(#{length($ram-colors)}n+#{$i}){
+          border-color: nth($ram-colors, $i);
+          color: nth($ram-colors, $i);
+        }
+      }
+
+    }
   }
 }
