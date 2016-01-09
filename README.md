@@ -1,13 +1,6 @@
-<<<<<<< HEAD
+
 # platfoneLite
 Platfone Lite version from scratch
-||||||| merged common ancestors
-=======
-reddit-clone
-============
-
-The code for the Reddit Clone.
-
 
 ## Gulp
 
@@ -21,4 +14,3 @@ The code for the Reddit Clone.
 ## html
 
 * 版型要改
->>>>>>> upstream/dev

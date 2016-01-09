@@ -81,7 +81,7 @@ gulp.task('clean', function (){
   del(opt.dist);
 });
 
-gulp.task('build',['sass', 'view', 'concatScripts'], function (){
+gulp.task('build',['sass', 'view'], function (){
 
 });
 
