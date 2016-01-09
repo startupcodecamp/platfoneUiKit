@@ -2,9 +2,6 @@
 # platfoneLite
 Platfone Lite version from scratch
 
-The code for the Reddit Clone.
-
-
 ## Gulp
 
 * watch

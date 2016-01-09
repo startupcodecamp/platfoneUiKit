@@ -1,24 +1,23 @@
-<div ng-show="!oauthType">
+<div ng-show="!userInfo.isAuthenticated">
     <div class="post">
-        <div class="lead bg-info">Please sign-in first to enter a new post!
-            &nbsp;&nbsp;<p class="btn btn-info">Sign In Now</p>
+        <div class="lead bg-info">&nbsp;&nbsp;Please sign-in first to enter a new post!
         </div>
     </div>
 </div>
-<div ng-show="oauthType">
+<div ng-show="userInfo.isAuthenticated">
     <form class="post post-form">
     <!-- if not login -->
     <div class="media">
         <div class="media-left">
         <a href="#">
-            <img class="post-avatar" ng-src="{{oauthType.profileImageURL}}" alt="avatar">
+            <img class="post-avatar" ng-src="{{userInfo.profileImageURL}}" alt="avatar">
         </a>
         </div>
         <div class="media-body">
-            <h4 class="media-heading">{{oauthType.displayName}}</h4> {{oauthType.displayName}}
+            <h4 class="media-heading">{{userInfo.displayName}}</h4>
         </div>
     </div>
-    <div class="form-group">
+    <div class="form-group tags-action">
         <tag-manager my-tags="tags"></tag-manager>
     </div>
     <div class="form-group">

@@ -1,0 +1,39 @@
+<!--Repeats through all the posts that are found-->
+<div>
+  <!--    The post author name -->
+  <h2>{{post.author}}Author</h2>
+  <p>
+    <strong>{{post.title}}Title</strong>
+  </p>
+  <div class="tags">
+    <span class="tag" ng-repeat="tag in tags">{{tag.val}}</a>
+  </div>
+  <!--    The post description-->
+  <p>{{post.description}}Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+  <button class="btn btn-danger" ng-click="deletePost(post)">Delete Post</button>
+  <!--    The post votes-->
+  <span>{{post.votes}}</span>
+  <!--    Add a new vote-->
+  <button class="btn btn-primary" ng-click="addVote(post)">Add Vote</button>
+  <br>
+  <br>
+  <div class="panel panel-default" ng-repeat="comment in comments">
+    <div class="panel-body">
+      <a ng-href="https://twitter.com/{{comment.user}}">{{comment.user}}</a>
+    </div>
+    <div class="panel-footer">
+      {{comment.text}}
+      <br>
+      <button class="btn btn-danger" ng-click="removeComment(post, comment)">Remove Comment</button>
+    </div>
+  </div>
+  <form>
+    <div class="input-group">
+      <input class="form-control" ng-model="comment.text">
+      <span class="input-group-addon btn btn-success" ng-click="addComment(post, comment)">Add Comment</span>
+      <!-- <div class="input-group-btn">
+        <button class="btn btn-success" ng-click="addComment(post, comment)">Add Comment</button>
+      </div> -->
+    </div>
+  </form>
+</div>

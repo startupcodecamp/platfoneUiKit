@@ -3,10 +3,12 @@
   display: block;
   background-color: $gray-lighter;
   box-shadow: $form-shadow;
+  margin-bottom: 2em;
 
   .media{
     margin: 10px auto;
   }
+
 
   .post-avatar{
     width: $img-sm;
