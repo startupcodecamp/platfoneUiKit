@@ -1,0 +1,8 @@
+<div class="tags">
+    <a ng-repeat="(idx, tag) in myTags" class="tag" ng-click="remove(idx)">{{tag.value}}</a>
+</div>
+<div class="input-group">
+    <input id="myTagInput" type="text" class="form-control" 
+        ng-keyup="$event.keyCode == 13 ? add() : null" placeholder="add a tag" ng-model="new_value"></input>
+    <span class="input-group-addon btn btn-success" ng-click="add()">Add</span>
+</div>
