@@ -21,3 +21,9 @@
 %transistion_default{
   transition: .6s ease-in-out;
 }
+
+%pseudos {
+  display: block;
+  content: '';
+  position: absolute;
+}

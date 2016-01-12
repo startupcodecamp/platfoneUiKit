@@ -53,3 +53,19 @@
     background-color: $brand-success;
   }
 }
+
+.post-form .tags-action .tag{
+  padding-right: .5em;
+  &:after{
+    @extend %pseudos;
+    content: '\e902';
+    font-family: platfoneicon;
+    display: inline-block;
+    margin-left: .3em;
+    font-size: .5em;
+    padding-top: .2em;
+    vertical-align: middle;
+  }
+
+
+}
