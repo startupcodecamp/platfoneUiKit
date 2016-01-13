@@ -12,7 +12,10 @@
                 <a class="navbar-brand" href=""><img alt="logo" src="images/logos/logo.png"/>Platfone</a>
             </div>
             <div class="collapse navbar-collapse" role="navigation">
-                <form class="nav navbar-form navbar-right">
+              <ul class="nav navbar-nav">
+                 <li><a href="#">Topic</a></li>
+               </ul>
+              <form class="nav navbar-form navbar-right">
                 <div ng-show="!myUser.isAuthenticated">
                     <button class="btn btn-info" ng-click="login('twitter')">Login with Twitter</button>
                     <button class="btn btn-info" ng-click="login('facebook')">Login with Facebook</button>
@@ -21,7 +24,7 @@
                     Hi {{myUser.displayName}}!
                     <button class="btn btn-info" ng-click="logout()">Logout</button>
                 </div>
-                </form>
+              </form>
             </div>
         </div>
     </div>
