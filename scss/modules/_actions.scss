@@ -22,6 +22,7 @@
 // for action modules
 
 .tags-action{
+  word-wrap: break-word;
   .tags{
     // for the tags list
     padding: .5em 0;
@@ -32,6 +33,8 @@
       border-radius: 3px;
       color: $white;
       background-color: $brand-info;
+      display: inline-block;
+      cursor: pointer;
 
       &:hover{
         text-decoration: none;
