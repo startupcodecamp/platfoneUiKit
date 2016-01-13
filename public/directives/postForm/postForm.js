@@ -13,7 +13,6 @@ app.directive('postForm', function(){
              //The function that runs when the user saves a post
             $scope.savePost = function (post) {
                 if (post.description && post.title && $scope.userInfo.isAuthenticated) {
-                 
                     Posts.$add({
                         author: $scope.userInfo.displayName,
                         title: post.title,
