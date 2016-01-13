@@ -23,6 +23,8 @@ app.directive('postForm', function(){
                         tags: $scope.tags,
                         user: $scope.userInfo.userName,
                         timestamp: Firebase.ServerValue.TIMESTAMP
+                    }).then(function(p){
+                        console.log('p=', p);
                     });
 
                     // Resetting all the values
