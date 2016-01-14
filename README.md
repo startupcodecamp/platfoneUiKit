@@ -12,7 +12,7 @@ Platfone Lite version 0.1 - Angular with Firebase
 
 ## Info
 
-** Login via Facebook and Twitter
-** Add post after logging in (including tags)
-** List post from most recent
-** Logout
+- **Login via Facebook and Twitter**
+- **Add post after logging in (including tags)**
+- **List post from most recent**
+- **Logout**
