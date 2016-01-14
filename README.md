@@ -11,8 +11,7 @@ Platfone Lite version 0.1 - Angular with Firebase
 * post-list
 
 ## Info
-This version contains:
-1. Login via Facebook and Twitter
-2. Add post after logging in (including tags)
-3. List post from most recent
-4. Logout
+** Login via Facebook and Twitter
+** Add post after logging in (including tags)
+** List post from most recent
+** Logout
