@@ -58,7 +58,7 @@
 }
 
 .post-form .tags-action .tag{
-  padding-right: .5em;
+  padding-right: 2em;
   &:after{
     @extend %pseudos;
     content: '\e902';

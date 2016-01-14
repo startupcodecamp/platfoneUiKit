@@ -17,6 +17,9 @@
           </li>
         </ul>
         <form class="nav navbar-form navbar-right">
+          <div class="action">
+            <button class="btn btn-warning">Add Page</button>
+          </div>
           <div ng-show="!myUser.isAuthenticated">
             <button class="btn btn-info" ng-click="login('twitter')">Login with Twitter</button>
             <button class="btn btn-info" ng-click="login('facebook')">Login with Facebook</button>
