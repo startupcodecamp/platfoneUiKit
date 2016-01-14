@@ -66,6 +66,7 @@ app.controller('MainController', function ($scope, $firebase, Auth, $routeParams
     $scope.auth = Auth;
     console.log(' $scope.myUser=',  $scope.myUser);
     
+    // Initialize myUser info 
     if (!$scope.myUser){
         $scope.myUser = {
             isAuthenticated: false,
@@ -80,11 +81,7 @@ app.controller('MainController', function ($scope, $firebase, Auth, $routeParams
       $scope.authData = authData;
 
       if ($scope.authData){
-        if ( $scope.authData.provider === 'twitter'){
-            $scope.oAuthDataType = $scope.authData.twitter;
-        } else {
-            $scope.oAuthDataType = $scope.authData.facebook;
-        }
+        $scope.oAuthDataType = authData[authData.provider];
 
         $scope.myUser.userName = (!$scope.oAuthDataType.username) ? '' : $scope.oAuthDataType.username;
         $scope.myUser.profileImageURL = $scope.oAuthDataType.profileImageURL;
@@ -94,64 +91,4 @@ app.controller('MainController', function ($scope, $firebase, Auth, $routeParams
       }
     });
 
-    $scope.logout = function (){
-        $scope.myUser = null;
-        delete $scope.myUser;
-        $scope.auth.$unauth()
-        $window.location.reload();
-    }
-
-    //Logging the user in
-    $scope.login = function (loginType) {
-        //Creating a refrence URL with Firebase
-        var ref = new Firebase('https://platfonechat.firebaseio.com/');
-        var usersRef = new Firebase('https://platfonechat.firebaseio.com/users/')
-        //Doing the OAuth popup
-        ref.authWithOAuthPopup(loginType, function (error, authData) {
-            //If there is an error
-            if (error) {
-                alert('ooops, problem logging in, there was an error!');
-                console.log('login error=', error);
-            }
-            //If the user is logged in correctly
-            else {
-                $scope.loginType = loginType;
-                console.log('authData=', authData);
-
-                //Set the authData we get to a global variable that can be used
-                $scope.authData = authData;
-
-                if ( loginType === 'twitter' ){
-                    $scope.oAuthDataType = authData.twitter;
-                }
-                else {
-                    $scope.oAuthDataType = authData.facebook;
-                }
-
-                $scope.myUser.userName = (!$scope.oAuthDataType.username) ? '' : $scope.oAuthDataType.username;
-                $scope.myUser.profileImageURL = $scope.oAuthDataType.profileImageURL;
-                $scope.myUser.displayName = $scope.oAuthDataType.displayName;
-                $scope.myUser.loginType = $scope.authData.provider;
-                $scope.myUser.isAuthenticated = true;
-                $scope.$apply();
-                
-                // Insert User OAuth info to database after logged in
-                usersRef.child(authData.uid).set(
-                    {
-                        id: $scope.oAuthDataType.id,
-                        provider: authData.provider,
-                        displayName: $scope.myUser.displayName,
-                        loginType: $scope.myUser.loginType,
-                        detail: $scope.oAuthDataType.cachedUserProfile
-                    }
-                , function(error){
-                    if (error) 
-                        console.log('User didnot get inserted.  Error=', error);
-                    else
-                        console.log('User added successfully');
-                });
-            }
-            //console.log('$scope.myUsername=', $scope.myUsername);
-        });
-    }
 });
