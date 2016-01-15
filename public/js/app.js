@@ -45,6 +45,10 @@ app.config(function ($routeProvider) {
             controller: 'MainController',
             templateUrl: 'partials/posting.html'
         })
+        .when('/topic/:topicName', {
+            controller: 'MainController',
+            templateUrl: 'partials/posting.html'
+        })
         .otherwise({
             redirectTo: '/'
         })
