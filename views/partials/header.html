@@ -17,7 +17,7 @@
         <button class="btn btn-info" ng-click="login('facebook')">Login with Facebook</button>
       </div>
       <div ng-show="{{myUser.isAuthenticated}}">
-          Hi {{oAuthDataType.displayName}}!
+          <strong>hey</strong>{{oAuthDataType.displayName}}!&nbsp;
          <button class="btn btn-info" ng-click="logout()">Logout</button>
       </div>
     </form>

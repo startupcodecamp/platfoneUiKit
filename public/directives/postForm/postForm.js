@@ -13,7 +13,6 @@ app.directive('postForm', function(){
              //The function that runs when the user saves a post
             $scope.savePost = function (post) {
                 if (post.description && post.title && $scope.userInfo.isAuthenticated) {
-                 
                     Posts.$add({
                         author: $scope.userInfo.displayName,
                         title: post.title,
@@ -23,6 +22,8 @@ app.directive('postForm', function(){
                         tags: $scope.tags,
                         user: $scope.userInfo.userName,
                         timestamp: Firebase.ServerValue.TIMESTAMP
+                    }).then(function(p){
+                        console.log('p=', p);
                     });
 
                     // Resetting all the values
