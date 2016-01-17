@@ -25,10 +25,10 @@ app.service('MyFirebaseHelper', function(){
         }
 
         nodeRef.child(topic).set(myParam, function(error){
-            if (error) {
-              console.log('error creating a new topic.  err=', error);
-            }
-          })
+          if (error) {
+            console.log('error creating a new topic.  err=', error);
+          }
+        })
       } else {
         // insert postId into topics
         nodeRef.child(topic).child('posts').child(newPostId).push(extraParam);
@@ -59,22 +59,22 @@ app.factory("Auth", ["$firebaseAuth",
 
 //Configuring the route providers to redirect to the right location
 app.config(function ($routeProvider) {
-    $routeProvider
-        .when('/', {
-            controller: 'MainController',
-            templateUrl: 'partials/posting.html'
-        })
-        .when('/tag/:tagName', {
-            controller: 'MainController',
-            templateUrl: 'partials/posting.html'
-        })
-        .when('/topic/:topicName', {
-            controller: 'MainController',
-            templateUrl: 'partials/posting.html'
-        })
-        .otherwise({
-            redirectTo: '/'
-        })
+  $routeProvider
+    .when('/', {
+      controller: 'MainController',
+      templateUrl: 'partials/posting.html'
+    })
+    .when('/tag/:tagName', {
+      controller: 'MainController',
+      templateUrl: 'partials/posting.html'
+    })
+    .when('/topic/:topicName', {
+      controller: 'MainController',
+      templateUrl: 'partials/posting.html'
+    })
+    .otherwise({
+      redirectTo: '/'
+    })
 });
 
 app.filter('reverse', function() {
@@ -92,14 +92,21 @@ app.controller('MainController', function ($scope, $firebase, Auth, $routeParams
   $scope.auth = Auth;
   console.log(' $scope.myUser=',  $scope.myUser);
 
+  // var postRef = new Firebase("https://platfonechat.firebaseio.com/posts/");
+  
+  // postRef.on('child_added', function(childSnapshot, prevChildkey){
+  //   console.log('new child snap=', childSnapshot, '  prevChildkey=', prevChildkey);
+  // });
+  
+
   // Initialize myUser info 
   if (!$scope.myUser){
-      $scope.myUser = {
-          isAuthenticated: false,
-          userName: '',
-          displayName: '',
-          loginType: ''
-      };
+    $scope.myUser = {
+      isAuthenticated: false,
+      userName: '',
+      displayName: '',
+      loginType: ''
+    };
   }
 
   // any time auth status updates, add the user data to scope
