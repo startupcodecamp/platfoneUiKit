@@ -1,0 +1,32 @@
+.divider {
+  position: relative;
+  text-align: center;
+  line-height: 1.2;
+  margin: 50px 0 10px;
+
+  &::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 55%;
+    width: 100%;
+    border-top: 1px solid rgba(0,0,0,0.15);
+  }
+
+  .name {
+    display: inline-block;
+    border: 1px solid rgba(0,0,0,0.44);
+    background: #fff;
+    text-transform: uppercase;
+    padding: 3px 8px 2px 12px;
+    letter-spacing: .3em;
+    color: rgba(0,0,0,0.6);
+    position: relative;
+
+    &:hover {
+      border-color: rgba(0,0,0,0.6);
+      color: rgba(0,0,0,0.8);
+    }
+  }
+
+}

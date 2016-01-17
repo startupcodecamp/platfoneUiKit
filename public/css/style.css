@@ -6156,20 +6156,20 @@ body {
   display: inline-block;
   margin: 15px; }
   .radio-input-img li:nth-child(0) label {
-    background-color: #0590f7;
-    border: 3px solid #0590f7; }
+    background-color: #02d796;
+    border: 3px solid #02d796; }
   .radio-input-img li:nth-child(1) label {
-    background-color: #021bb2;
-    border: 3px solid #021bb2; }
+    background-color: #aba295;
+    border: 3px solid #aba295; }
   .radio-input-img li:nth-child(2) label {
-    background-color: #75e830;
-    border: 3px solid #75e830; }
+    background-color: #72651f;
+    border: 3px solid #72651f; }
   .radio-input-img li:nth-child(3) label {
-    background-color: #760aeb;
-    border: 3px solid #760aeb; }
+    background-color: #922b51;
+    border: 3px solid #922b51; }
   .radio-input-img li:nth-child(4) label {
-    background-color: #0874c4;
-    border: 3px solid #0874c4; }
+    background-color: #8d9051;
+    border: 3px solid #8d9051; }
 
 .radio-input-img label {
   display: block;
@@ -6743,45 +6743,46 @@ body {
 
 .tags-action {
   word-wrap: break-word; }
-  .tags-action .tags {
-    padding: .5em 0;
-    margin-bottom: .5em; }
-    .tags-action .tags a {
-      margin: 5px .5em;
-      padding: 5px 15px;
-      border-radius: 3px;
-      color: #FFFFFF;
-      background-color: #4FC1E9;
-      display: inline-block;
-      cursor: pointer; }
-      .tags-action .tags a:hover {
-        text-decoration: none; }
-      .tags-action .tags a:nth-child(6n+1) {
-        background-color: #4FC5C7; }
-        .tags-action .tags a:nth-child(6n+1):hover {
-          background-color: #38dbde; }
-      .tags-action .tags a:nth-child(6n+2) {
-        background-color: #97EC71; }
-        .tags-action .tags a:nth-child(6n+2):hover {
-          background-color: #91fc61; }
-      .tags-action .tags a:nth-child(6n+3) {
-        background-color: #FA7DA6; }
-        .tags-action .tags a:nth-child(6n+3):hover {
-          background-color: #ff78a4; }
-      .tags-action .tags a:nth-child(6n+4) {
-        background-color: #A1DEC3; }
-        .tags-action .tags a:nth-child(6n+4):hover {
-          background-color: #94ebc4; }
-      .tags-action .tags a:nth-child(6n+5) {
-        background-color: #8A8CB2; }
-        .tags-action .tags a:nth-child(6n+5):hover {
-          background-color: #777bc5; }
-      .tags-action .tags a:nth-child(6n+6) {
-        background-color: #DBF977; }
-        .tags-action .tags a:nth-child(6n+6):hover {
-          background-color: #deff71; }
   .tags-action .input-group-addon {
     background-color: #A0D468; }
+
+.tags {
+  padding: .5em 0;
+  margin-bottom: .5em; }
+  .tags a {
+    margin: 5px .5em;
+    padding: 5px 15px;
+    border-radius: 3px;
+    color: #FFFFFF;
+    background-color: #4FC1E9;
+    display: inline-block;
+    cursor: pointer; }
+    .tags a:hover {
+      text-decoration: none; }
+    .tags a:nth-child(6n+1) {
+      background-color: #4FC5C7; }
+      .tags a:nth-child(6n+1):hover {
+        background-color: #38dbde; }
+    .tags a:nth-child(6n+2) {
+      background-color: #97EC71; }
+      .tags a:nth-child(6n+2):hover {
+        background-color: #91fc61; }
+    .tags a:nth-child(6n+3) {
+      background-color: #FA7DA6; }
+      .tags a:nth-child(6n+3):hover {
+        background-color: #ff78a4; }
+    .tags a:nth-child(6n+4) {
+      background-color: #A1DEC3; }
+      .tags a:nth-child(6n+4):hover {
+        background-color: #94ebc4; }
+    .tags a:nth-child(6n+5) {
+      background-color: #8A8CB2; }
+      .tags a:nth-child(6n+5):hover {
+        background-color: #777bc5; }
+    .tags a:nth-child(6n+6) {
+      background-color: #DBF977; }
+      .tags a:nth-child(6n+6):hover {
+        background-color: #deff71; }
 
 .post-form .tags-action .tag {
   padding-right: 2em; }
@@ -6793,5 +6794,30 @@ body {
     font-size: .8em;
     padding-top: .2em;
     vertical-align: middle; }
+
+.divider {
+  position: relative;
+  text-align: center;
+  line-height: 1.2;
+  margin: 50px 0 10px; }
+  .divider::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 55%;
+    width: 100%;
+    border-top: 1px solid rgba(0, 0, 0, 0.15); }
+  .divider .name {
+    display: inline-block;
+    border: 1px solid rgba(0, 0, 0, 0.44);
+    background: #fff;
+    text-transform: uppercase;
+    padding: 3px 8px 2px 12px;
+    letter-spacing: .3em;
+    color: rgba(0, 0, 0, 0.6);
+    position: relative; }
+    .divider .name:hover {
+      border-color: rgba(0, 0, 0, 0.6);
+      color: rgba(0, 0, 0, 0.8); }
 
 /*# sourceMappingURL=style.css.map */
