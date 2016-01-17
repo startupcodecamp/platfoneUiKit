@@ -30,12 +30,12 @@ app.directive('postListing', function(){
             
             //Adding a vote
             $scope.addVote = function (post) {
-            // if login
-            if ($scope.authData) {
-                //if not vote yet.
-                post.votes++;
-                Posts.$save(post);
-            }
+              // if login
+              if ($scope.authData) {
+                  //if not vote yet.
+                  post.votes++;
+                  Posts.$save(post);
+              }
             }
 
             //Deleting a post
