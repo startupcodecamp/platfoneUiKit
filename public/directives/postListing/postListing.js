@@ -14,17 +14,17 @@ app.directive('postListing', function(){
         var topicRef = new Firebase("https://platfonechat.firebaseio.com/topics");
         var topicPostsRef = topicRef.child($routeParams.topicName).child("posts");
         
-        var topics = [];
         topicPostsRef.on("child_added", function(snap) {
           postsRef.child(snap.key()).once("value", function(mySnap) {
             // Render the comment on the link page.
             // console.log('mySnap=', mySnap.val());
-            topics.push(mySnap.val());
-            // console.log('$scope.posts=', $scope.posts); 
-            $scope.$apply();
-            $scope.$watch('topics', function(newValue, oldValue){
-              $scope.posts = topics;
-            });
+            $scope.posts.push(mySnap.val());
+            
+            // prevent scope digest in progress issue
+            var phase = $scope.$root.$$phase;
+            if(!(phase == '$apply') && !(phase == '$digest')) {
+              $scope.$apply();
+            }
           });
         });
       } else {
