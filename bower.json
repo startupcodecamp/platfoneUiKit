@@ -1,0 +1,17 @@
+{
+  "name": "public",
+  "description": "Platfone",
+  "main": "app.js",
+  "authors": [
+    "Jonathan"
+  ],
+  "license": "ISC",
+  "homepage": "https://platfonechat.firebaseapp.com",
+  "moduleType": [
+    "node"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "~3.3.6",
+    "ng-tags-input": "~3.0.0"
+  }
+}
