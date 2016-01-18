@@ -45,6 +45,10 @@ app.config(function ($routeProvider) {
             controller: 'MainController',
             templateUrl: 'partials/posting.html'
         })
+        .when('/topic/', {
+          controller: 'MainController',
+          templateUrl: 'partials/topic.html'
+        })
         .otherwise({
             redirectTo: '/'
         })
@@ -62,11 +66,11 @@ app.controller('MainController', function ($scope, $firebase, Auth, $routeParams
 
    // console.log('$routeParams.tagName=', $routeParams.tagName, ' $scope.defaultTag=', $scope.defaultTag);
    // MyService.sayHello();
-    
+
     $scope.auth = Auth;
     console.log(' $scope.myUser=',  $scope.myUser);
-    
-    // Initialize myUser info 
+
+    // Initialize myUser info
     if (!$scope.myUser){
         $scope.myUser = {
             isAuthenticated: false,
