@@ -6156,20 +6156,20 @@ body {
   display: inline-block;
   margin: 15px; }
   .radio-input-img li:nth-child(0) label {
-    background-color: #a95226;
-    border: 3px solid #a95226; }
+    background-color: #149116;
+    border: 3px solid #149116; }
   .radio-input-img li:nth-child(1) label {
-    background-color: #d226c4;
-    border: 3px solid #d226c4; }
+    background-color: #04cde8;
+    border: 3px solid #04cde8; }
   .radio-input-img li:nth-child(2) label {
-    background-color: #06e967;
-    border: 3px solid #06e967; }
+    background-color: #ac01fd;
+    border: 3px solid #ac01fd; }
   .radio-input-img li:nth-child(3) label {
-    background-color: #294418;
-    border: 3px solid #294418; }
+    background-color: #1b2c6d;
+    border: 3px solid #1b2c6d; }
   .radio-input-img li:nth-child(4) label {
-    background-color: #6ea96d;
-    border: 3px solid #6ea96d; }
+    background-color: #7ae397;
+    border: 3px solid #7ae397; }
 
 .radio-input-img label {
   display: block;
