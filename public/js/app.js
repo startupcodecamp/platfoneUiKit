@@ -92,13 +92,6 @@ app.controller('MainController', function ($scope, $firebase, Auth, $routeParams
   $scope.auth = Auth;
   console.log(' $scope.myUser=',  $scope.myUser);
 
-  // var postRef = new Firebase("https://platfonechat.firebaseio.com/posts/");
-  
-  // postRef.on('child_added', function(childSnapshot, prevChildkey){
-  //   console.log('new child snap=', childSnapshot, '  prevChildkey=', prevChildkey);
-  // });
-  
-
   // Initialize myUser info 
   if (!$scope.myUser){
     $scope.myUser = {
@@ -108,7 +101,7 @@ app.controller('MainController', function ($scope, $firebase, Auth, $routeParams
       loginType: ''
     };
   }
-
+  
   // any time auth status updates, add the user data to scope
   $scope.auth.$onAuth(function(authData) {
     $scope.authData = authData;

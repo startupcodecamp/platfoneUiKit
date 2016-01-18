@@ -32,13 +32,6 @@ gulp.task("concatScripts", function () {
   .pipe(gulp.dest(opt.dist + '/js'));
 });
 
-gulp.task('access', function (){
-  gulp.src(opt.font + '/**.**')
-  .pipe(gulp.dest(opt.dist + '/css/fonts'));
-
-  gulp.src(opt.img + '/**', { base: './'})
-  .pipe(gulp.dest(opt.dist));
-});
 
 gulp.task('view', function (){
   return gulp.src(opt.view + '/*.html')
@@ -47,7 +40,7 @@ gulp.task('view', function (){
   .pipe(gulp.dest(opt.dist));
 });
 
-gulp.task('sass', ['access'], function (){
+gulp.task('sass', function (){
   return gulp.src(opt.sass + '/style.scss')
   .pipe(plumber())
   .pipe(maps.init({loadMaps: true}))
@@ -63,9 +56,6 @@ watch([opt.sass + '/**/*.scss'], function() {
   gulp.start('sass');
 });
 
-watch([opt.view + '/**/*.html'], function (){
-  gulp.start('view');
-});
 
 gulp.task('webserver', function() {
   gulp.src(opt.dist)

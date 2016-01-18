@@ -23,37 +23,37 @@
 
 .tags-action{
   word-wrap: break-word;
-  .tags{
-    // for the tags list
-    padding: .5em 0;
-    margin-bottom: .5em;
-    a{
-      margin: 5px .5em;
-      padding: 5px 15px;
-      border-radius: 3px;
-      color: $white;
-      background-color: $brand-info;
-      display: inline-block;
-      cursor: pointer;
-
-      &:hover{
-        text-decoration: none;
-      }
-
-      @for $i from 1 through length($ram-colors) {
-        &:nth-child(#{length($ram-colors)}n+#{$i}){
-          background-color: nth($ram-colors, $i);
-
-          &:hover{
-            background-color: saturate(nth($ram-colors, $i), 20%);
-          }
-        }
-      }
-
-    }
-  }
   .input-group-addon{
     background-color: $brand-success;
+  }
+}
+.tags{
+  // for the tags list
+  padding: .5em 0;
+  margin-bottom: .5em;
+  a{
+    margin: 5px .5em;
+    padding: 5px 15px;
+    border-radius: 3px;
+    color: $white;
+    background-color: $brand-info;
+    display: inline-block;
+    cursor: pointer;
+
+    &:hover{
+      text-decoration: none;
+    }
+
+    @for $i from 1 through length($ram-colors) {
+      &:nth-child(#{length($ram-colors)}n+#{$i}){
+        background-color: nth($ram-colors, $i);
+
+        &:hover{
+          background-color: saturate(nth($ram-colors, $i), 20%);
+        }
+      }
+    }
+
   }
 }
 

@@ -1,6 +1,6 @@
 
 # platfoneLite
-Platfone Lite version from scratch
+Platfone Lite version 0.1 - Angular with Firebase
 
 ## Gulp
 
@@ -10,7 +10,9 @@ Platfone Lite version from scratch
 * post-form
 * post-list
 
+## Info
 
-## html
-
-* 版型要改
+- **Login via Facebook and Twitter**
+- **Add post after logging in (including tags)**
+- **List post from most recent**
+- **Logout**
