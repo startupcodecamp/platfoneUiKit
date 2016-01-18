@@ -64,13 +64,13 @@ app.config(function ($routeProvider) {
       controller: 'MainController',
       templateUrl: 'partials/posting.html'
     })
-    .when('/tag/:tagName', {
-      controller: 'MainController',
-      templateUrl: 'partials/posting.html'
-    })
     .when('/topic/:topicName', {
       controller: 'MainController',
       templateUrl: 'partials/posting.html'
+    })
+    .when('/topics', {
+      controller: 'MainController',
+      templateUrl: 'partials/topic.html'
     })
     .otherwise({
       redirectTo: '/'
