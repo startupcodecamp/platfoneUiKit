@@ -12,6 +12,7 @@ app.directive('tagManager', function() {
             scope.add = function() {
                 if(!scope.new_value) scope.new_value = "";
 
+                console.log('scope.new_value=', scope.new_value);
                 if (scope.new_value.trim().length === 0) {
                     alert('please enter a non-empty string');
                 } else {
