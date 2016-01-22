@@ -11,9 +11,9 @@ var TOPICS_LOCATION_FIREBS = 'https://platfonechat.firebaseio.com/topics/';
 
 
 app.service('MyFirebaseHelper', function(){
-  // Tests to see if /users/<userId> has any data. 
+  // Tests to see if /users/<userId> has any data.
   this.createTopicIfNotExists = function(topic, newPostId, extraParam) {
-    
+
     var nodeRef = new Firebase(TOPICS_LOCATION_FIREBS);
     nodeRef.child(topic).once('value', function(snapshot) {
       var exists = (snapshot.val() !== null);
@@ -72,6 +72,10 @@ app.config(function ($routeProvider) {
       controller: 'MainController',
       templateUrl: 'partials/topic.html'
     })
+    .when('/profile', {
+      controller: 'MainController',
+      templateUrl: 'partials/profile.html'
+    })
     .otherwise({
       redirectTo: '/'
     })
@@ -88,11 +92,11 @@ app.filter('reverse', function() {
 app.controller('MainController', function ($scope, $firebase, Auth, $routeParams, Posts, $window) {
   // console.log('$routeParams.tagName=', $routeParams.tagName, ' $scope.defaultTag=', $scope.defaultTag);
   // MyService.sayHello();
-  
+
   $scope.auth = Auth;
   console.log(' $scope.myUser=',  $scope.myUser);
 
-  // Initialize myUser info 
+  // Initialize myUser info
   if (!$scope.myUser){
     $scope.myUser = {
       isAuthenticated: false,
@@ -101,7 +105,7 @@ app.controller('MainController', function ($scope, $firebase, Auth, $routeParams
       loginType: ''
     };
   }
-  
+
   // any time auth status updates, add the user data to scope
   $scope.auth.$onAuth(function(authData) {
     $scope.authData = authData;

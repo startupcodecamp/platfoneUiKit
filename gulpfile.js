@@ -20,16 +20,31 @@ var opt = {
 };
 
 var scripts = [
-  './app.js',
-  './directives/**.js'
+  'bower_components/sweetalert/dist/sweetalert.min.js'
+];
+
+var styleSheets = [
+  'bower_components/sweetalert/dist/sweetalert.css'
 ];
 
 gulp.task("concatScripts", function () {
   return gulp.src(scripts)
   .pipe(maps.init({loadMaps: true}))
-  .pipe(concat('app.js'))
+  .pipe(concat('plugins.js'))
   .pipe(maps.write())
   .pipe(gulp.dest(opt.dist + '/js'));
+});
+
+gulp.task("concatSheets", function (){
+  return gulp.src(styleSheets)
+    .pipe(maps.init({loadMaps: true}))
+    .pipe(concat('plugins.css'))
+    .pipe(maps.write())
+    .pipe(gulp.dest(opt.dist + '/css'));
+});
+
+gulp.task("plugins",['concatScripts', 'concatSheets'], function (){
+
 });
 
 
@@ -71,7 +86,7 @@ gulp.task('clean', function (){
   del(opt.dist);
 });
 
-gulp.task('build',['sass', 'view'], function (){
+gulp.task('build',['sass', 'plugins', 'view'], function (){
 
 });
 
