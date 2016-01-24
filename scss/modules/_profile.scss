@@ -1,0 +1,23 @@
+.profile{
+  width: 80%;
+  margin: 10px auto;
+  padding: 5px 2em;
+  padding-bottom: .5em;
+  border-bottom: 1px solid $gray-light;
+
+  a{
+    @extend %link-no-line;
+  }
+}
+
+.profile-action{
+  vertical-align: middle;
+  width: 20%;
+}
+
+.title{
+  li{
+    margin-right: 1em;
+    width: 35%;
+  }
+}

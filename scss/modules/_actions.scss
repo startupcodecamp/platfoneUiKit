@@ -2,6 +2,11 @@
   // for single action element
   @extend %transistion_default;
   margin-right: 1em;
+  display: inline-block;
+  vertical-align: middle;
+  .icn-lg{
+    font-size: 3.5rem;
+  }
 }
 
 .action-love{
